@@ -4,7 +4,7 @@ def prueba(request):
     return HttpResponse("Hola xd")
 
 def prueba2 (request):
-    return HttpResponse("SExoooooo")
+    return HttpResponse("a")
 
 def fecha(request):
     
