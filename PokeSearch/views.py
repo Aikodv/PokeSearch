@@ -7,7 +7,7 @@ import django.shortcuts
 import render 
 
 def prueba(request):
-    return HttpResponse("<html><head><title>Esta es mi primera pagina</title></head><body><h1>Esto es un encabezado</h1><p>Y esto es un parrafo, donde podemos escribir todo el rollo que se nos ocurra.</body></html>")
+    return HttpResponse("<html><head><title>Hola Mundo!</title></head><body><h1>FromwareTeam</h1><p>Javier Alarcón, Alvaro Alcaino, Luis Vergara, Sebastian Villarroel.</body></html>")
 
 def prueba2 (request):
     return HttpResponse("a")
