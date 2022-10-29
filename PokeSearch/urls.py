@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from PokeSearch.views import prueba, prueba2
+from PokeSearch.views import prueba, prueba2,fecha
 
 urlpatterns = [
     path('admin/' , admin.site.urls),
     path("prueba/", prueba),
-    path("prueba2/", prueba2)
+    path("prueba2/", prueba2),
+    path("fecha_actual",fecha)
 ]

@@ -9,5 +9,6 @@ def prueba2 (request):
 def fecha(request):
     
     fecha_actual = datetime.datetime.now()
+    return HttpResponse(fecha_actual)
     
 print(datetime.datetime.now())
