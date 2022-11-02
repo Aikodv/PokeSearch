@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- The load static is necessary to load images, css and JS -->
 {% load static %}
 
 <head>
@@ -9,41 +8,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" crossorigin="anonymous"/>
     <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
-    <title>PokeSeach | Django</title>
+    <title>PokeSearch</title>
 </head>
 <body>
-    <h2>Using Django Framework</h5> 
-    <!-- Inserting the main image -->
-    <img src="{% static 'img/pokedex-image.png' %}" class="image" style="width:100px;">
+    <h2>PokeSearch</h5> 
+    <img src="{% static 'img/pokedex.png' %}" class="image" style="width:100px;">
     
     <form method="post">
-        <!-- Cross-site request forgery Protection-->
         {% csrf_token %}
-        
-        <!-- Searchbar -->
-        <input type="text" name="pokemon" placeholder="Search Your Pokemon...">
-        <button type="submit">Search</button>
+        <input type="text" name="pokemon" placeholder="Buscar pokemon">
+        <button type="submit">Buscar</button>
     </form>
     <div>
-        <!-- Rendering everything requested to the API -->
-        <!-- First we validate the data requested -->
         {% if number and name %}
             <h3>
-                Number: {{number}}
+                Numero Pokedex: {{number}}
             </h3>
             <h3>
-                Name: {{name}}
-            </h3>
-            <h3>
-                Height: {{height}}
-            </h3>
-            <h3>
-                Weight: {{weight}}
+                Nombre: {{name}}
             </h3>
             <h3>
                 Default sprite: 
             </h3>
             <img src="{{sprite}}" alt="{{name}} sprite" style="width:70px">
+            <h3>
+                Grupo 7
+            </h3>
+            <h3>
+                Alvaro Alcaino
+            </h3>
+            <h3>
+                Javier Alarcon
+            </h3>
+            <h3>
+                Sebastian Villaroel
+            </h3>
+            <h3>
+                Luis Vergara
+            </h3>
+
         {% else %}
         <div>
             <h3>
