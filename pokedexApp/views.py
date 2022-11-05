@@ -50,48 +50,28 @@ def check_evolution(request,list_pokemon):
     return list_evolution
 
 
+
+ 
 def pokeindex(request):
     try:
         if request.method == 'POST':
             pokemon = request.POST['pokemon'].lower()
             pokemon = pokemon.replace(' ', '%20')
-            url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
-            url_pokeapi.add_header('User-Agent', "pikachu")
+            url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/type/{pokemon}')
+            url_pokeapi.add_header('User-Agent', "poison")
             source = urllib.request.urlopen(url_pokeapi).read()
-
+            
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
             list_of_data = json.loads(source)
+
                 
-            # La variable 'data' guardará todo lo que vamos a renderizar en HTML
-            # Las llaves y valores las provee la API de Pokemon
-
-            # Altura de decímetros a metros
-            height_obtained = (float(list_of_data['height']) * 0.1)
-            height_rounded = round(height_obtained, 2)
-
-            # Peso de hectogramos a kilogramos
-            weight_obtained = (float(list_of_data['weight']) * 0.1)
-            weight_rounded = round(weight_obtained, 2)
-            # count abilities and create a list with them and create string with them
-            count_abilities = len(list_of_data['abilities'])
-            list_abilities = []
-            for i in range(count_abilities):
-                list_abilities.append(list_of_data['abilities'][i]['ability']['name'])
-            abilities = ', '.join(list_abilities)
-            # count types and create a list with them and create string with them
-            count_types = len(list_of_data['types'])
-            list_types = []
-            for i in range(count_types):
-                list_types.append(list_of_data['types'][i]['type']['name'])
-            types = ', '.join(list_types)      
-           
             data = {
-                "number": str(list_of_data['id']),
-                "name": str(list_of_data['name']).capitalize(),
+                "name": str(list_of_data['name']),
+                "lista_epica": list_pokemon(request,str(list_of_data['name'])),
+    
             }
 
-            print(data)
         else:
             data = {}
         return render(request, "main/pokeindex.html", data)
@@ -100,9 +80,8 @@ def pokeindex(request):
             return render(request, "main/404.html")
 
 
-def index(request):
-    
 
+def index(request):
     try:
         if request.method == 'POST':
             pokemon = request.POST['pokemon'].lower()
@@ -145,24 +124,18 @@ def index(request):
                 "weight": str(weight_rounded)+ " kg",
                 "sprite": str(list_of_data['sprites']['front_default']),
                 "sprite2": str(list_of_data['sprites']['front_shiny']), 
-                "type": str(list_of_data['types'][0]['type']['name']).capitalize(),
-                "list_abilities": abilities,
-                "types": types,
+                "type": types,
                 "generation": str(list_of_data['game_indices'][0]['version']['name']).capitalize(),
-                "list_pokemon": list_pokemon(request,"fire"),
-                "list_generation": list_generation(request,1),
-                "intersect": intersect(request,1,"fire"),
-                "check_evolution": check_evolution(request,(intersect(request,1,"fire"))),
-                
+
             }
 
-            print(data)
         else:
             data = {}
         return render(request, "main/index.html", data)
     except HTTPError as e:
         if e.code == 404:
             return render(request, "main/404.html")
+
 def index_pruebas(request):
     try:
         if request.method == 'POST':
@@ -171,44 +144,14 @@ def index_pruebas(request):
             url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
             url_pokeapi.add_header('User-Agent', "pikachu")
             source = urllib.request.urlopen(url_pokeapi).read()
-
+            
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
             list_of_data = json.loads(source)
                 
-            # La variable 'data' guardará todo lo que vamos a renderizar en HTML
-            # Las llaves y valores las provee la API de Pokemon
-
-            # Altura de decímetros a metros
-            height_obtained = (float(list_of_data['height']) * 0.1)
-            height_rounded = round(height_obtained, 2)
-
-            # Peso de hectogramos a kilogramos
-            weight_obtained = (float(list_of_data['weight']) * 0.1)
-            weight_rounded = round(weight_obtained, 2)
-            # count abilities and create a list with them and create string with them
-            count_abilities = len(list_of_data['abilities'])
-            list_abilities = []
-            for i in range(count_abilities):
-                list_abilities.append(list_of_data['abilities'][i]['ability']['name'])
-            abilities = ', '.join(list_abilities)
-            # count types and create a list with them and create string with them
-            count_types = len(list_of_data['types'])
-            list_types = []
-            for i in range(count_types):
-                list_types.append(list_of_data['types'][i]['type']['name'])
-            types = ', '.join(list_types)      
-           
             data = {
                 "number": str(list_of_data['id']),
                 "name": str(list_of_data['name']).capitalize(),
-                "height": str(height_rounded)+ " m",
-                "weight": str(weight_rounded)+ " kg",
-                "sprite": str(list_of_data['sprites']['front_default']),
-                "sprite2": str(list_of_data['sprites']['front_shiny']), 
-                "type": str(list_of_data['types'][0]['type']['name']).capitalize(),
-                "list_abilities": abilities,
-                "types": types,
                 "generation": str(list_of_data['game_indices'][0]['version']['name']).capitalize(),
                 "list_pokemon": list_pokemon(request,"fire"),
                 "list_generation": list_generation(request,1),
@@ -217,7 +160,6 @@ def index_pruebas(request):
                 
             }
 
-            print(data)
         else:
             data = {}
         return render(request, "main/index_pruebas.html", data)

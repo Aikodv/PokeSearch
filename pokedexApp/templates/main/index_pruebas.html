@@ -17,10 +17,9 @@
     <h2></h2>
     <img src="{% static 'img/pikachu.png' %}" class="image" style="width:100px;">
     
-    <form method="post">
+    <form method="get">
         {% csrf_token %}
-        <input type="text" name="pokemon" placeholder="Search pokemon">
-        <button type="submit">Search</button>
+        <input type="button" value="normal" name="pokemon" submit = "pikachu">
     </form>
     <div>
         {% if number and name %}
@@ -28,23 +27,28 @@
                 <p style="color:white";>Pokedex number: {{number}}</p>
             </h3>
             <h3>
-                <p style="color:white";>Name: {{name}}</p>
+                <p style="color:white";>PUEDEN EVOLUCIONAR</p>
             </h3>
             <h3>
-                <p style="color:white";>Name: {{check_evolution}}</p>
+                <p style="color:white";> {{check_evolution}}</p>
             </h3>
-
-                <p style="color:white";>Height: {{intersect}}</p>
+            <h3> 
+                <p style="color:white";>INTERSECCION DE LISTA </p>
+            </h3>
+            <h3>   
+                <p style="color:white";> {{intersect}}</p>
             </h3>
             <h3>
-                <p style="color:white";>Type: {{list_types}}</p>
+                <p style="color:white";>POKEMONS POR GENERACION</p>
             </h3>
             <h3>
-                <p style="color:white";>Abilities: {{list_generation}}</p>
+                <p style="color:white";>{{list_generation}}</p>
             </h3>
-
             <h3>
-                <p style="color:white";>generation: {{list_pokemon}}</p>
+                <p style="color:white";> POKEMONS POR TIPOS</p>
+            </h3>
+            <h3>
+                <p style="color:white";> {{list_pokemon}}</p>
             </h3>
 
 

@@ -22,6 +22,7 @@
         <input type="text" name="pokemon" placeholder="Search pokemon">
         <button type="submit">Search</button>
     </form>
+    <h1> <a href="http://127.0.0.1:8000">volver</a></h1>
     <div>
         {% if number and name %}
             <h3>
@@ -30,24 +31,13 @@
             <h3>
                 <p style="color:white";>Name: {{name}}</p>
             </h3>
-            <h3>
-                <p style="color:white";>Name: {{check_evolution}}</p>
-            </h3>
+
             <h3>
                 <p style="color:white";> Weight: {{weight}}</p>
             </h3>
-            <h3>
-                <p style="color:white";>Height: {{intersect}}</p>
-            </h3>
-            <h3>
-                <p style="color:white";>Type: {{list_types}}</p>
-            </h3>
-            <h3>
-                <p style="color:white";>Abilities: {{list_generation}}</p>
-            </h3>
 
             <h3>
-                <p style="color:white";>generation: {{list_pokemon}}</p>
+                <p style="color:white";>Types: {{type}}</p>
             </h3>
             <h3>
                 <p style="color:white";>Default sprite: </p>
