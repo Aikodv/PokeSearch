@@ -5,6 +5,7 @@ from http import HTTPStatus
 from urllib.error import HTTPError
 
 
+# Funciones para los path
 
 def list_pokemon(request,type):
     url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/type/'+str(type))
@@ -64,11 +65,12 @@ def pokeindex(request):
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
             list_of_data = json.loads(source)
-
-                
+               
             data = {
                 "name": str(list_of_data['name']),
                 "lista_epica": list_pokemon(request,str(list_of_data['name'])),
+
+                
     
             }
 
@@ -136,33 +138,3 @@ def index(request):
         if e.code == 404:
             return render(request, "main/404.html")
 
-def index_pruebas(request):
-    try:
-        if request.method == 'POST':
-            pokemon = request.POST['pokemon'].lower()
-            pokemon = pokemon.replace(' ', '%20')
-            url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
-            url_pokeapi.add_header('User-Agent', "pikachu")
-            source = urllib.request.urlopen(url_pokeapi).read()
-            
-            # Convirtiendo el JSON a un diccionario
-            # 'list_of_data' guardará todos los datos que estamos solicitando
-            list_of_data = json.loads(source)
-                
-            data = {
-                "number": str(list_of_data['id']),
-                "name": str(list_of_data['name']).capitalize(),
-                "generation": str(list_of_data['game_indices'][0]['version']['name']).capitalize(),
-                "list_pokemon": list_pokemon(request,"fire"),
-                "list_generation": list_generation(request,1),
-                "intersect": intersect(request,1,"fire"),
-                "check_evolution": check_evolution(request,(intersect(request,1,"fire"))),
-                
-            }
-
-        else:
-            data = {}
-        return render(request, "main/index_pruebas.html", data)
-    except HTTPError as e:
-        if e.code == 404:
-            return render(request, "main/404.html")
