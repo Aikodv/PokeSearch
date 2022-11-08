@@ -19,28 +19,27 @@
     
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="pokemon" placeholder="Search pokemon">
-        <button type="submit">Search</button>
+        <input type="text" name="pokemon" placeholder="Ingrese el Pokémon">
+        <button type="submit">Buscar</button>
     </form>
-    <h1> <a href="http://127.0.0.1:8000">volver</a></h1>
     <div>
         {% if number and name %}
-            <h3>
-                <p style="color:white";>Pokedex number: {{number}}</p>
+        <h3>
+            <p style="color:white";>Numero de la Pokédex: {{number}}</p>
             </h3>
             <h3>
-                <p style="color:white";>Name: {{name}}</p>
-            </h3>
-
-            <h3>
-                <p style="color:white";> Weight: {{weight}}</p>
+                <p style="color:white";>Nombre Pokémon: {{name}}</p>
             </h3>
 
             <h3>
-                <p style="color:white";>Types: {{type}}</p>
+                <p style="color:white";> Peso: {{weight}}</p>
+            </h3>
+
+            <h3>
+                <p style="color:white";>Tipo: {{type}}</p>
             </h3>
             <h3>
-                <p style="color:white";>Default sprite: </p>
+                <p style="color:white";>Sprite clásico: </p>
             </h3>
             <img src="{{sprite}}" alt="{{name}} sprite" style="width:300px">
             <img src="{{sprite2}}" alt="{{name}} sprite" style="width:300px">
@@ -49,10 +48,11 @@
         {% else %}
         <div>
             <h3>
-                <p style="color:white";>Write the name or ID of your pokemon.</p>
+                <p style="color:rgb(0, 0, 0)";>Escribe el nombre o ID de tu Pokémon.</p>
             </h3>
         </div>
         {% endif %}
     </div>
+    <h1> <a href="http://127.0.0.1:8000">volver</a></h1>
 </body>
 </html>

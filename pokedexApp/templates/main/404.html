@@ -12,10 +12,12 @@
     <title>PokeSearch</title>
 </head>
 <body style="background: linear-gradient(to right, #2d2ad4,#E4d2f7, #D42a45);">
-    <img src="{% static 'img/pikachu_error.png' %}" class="image" style="width:100px;">
+    <img src="{% static 'img/pikachu_error.png' %}" class="image" style="width:350px;">
     
     <div>
-        <h3>Pokemon not found, <a href="{% url 'pokeindex' %}">return.</a></h3>
+        <h1>No encontramos al Pokémon ;(  </h1>
+        
+        <h2><a href="{% url 'pokeindex' %}">Volver.</a></h2>
     </div>
 </body>
 </html>
