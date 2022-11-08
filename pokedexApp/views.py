@@ -7,6 +7,18 @@ from urllib.error import HTTPError
 
 # Funciones para los path
 
+# create a function to get the list of pokemon of a color
+def list_color(request,color):
+    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-color/'+str(color))
+    url_pokeapi.add_header('User-Agent', "pikachu")
+    source = urllib.request.urlopen(url_pokeapi).read()
+    list_of_data = json.loads(source)
+    count_pokemon = len(list_of_data['pokemon_species'])
+    list_pokemon = []
+    for i in range(count_pokemon):
+        list_pokemon.append(list_of_data['pokemon_species'][i]['name'])
+    return list_pokemon
+
 def list_pokemon(request,type):
     url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/type/'+str(type))
     url_pokeapi.add_header('User-Agent', "pikachu")
@@ -82,7 +94,6 @@ def pokeindex(request):
             return render(request, "main/404.html")
 
 
-
 def index(request):
     try:
         if request.method == 'POST':
@@ -91,6 +102,11 @@ def index(request):
             url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
             url_pokeapi.add_header('User-Agent', "pikachu")
             source = urllib.request.urlopen(url_pokeapi).read()
+            a= str({pokemon})
+            if a =="vaporeon":
+                return render(request, "main/404.html", data)
+
+            
 
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
