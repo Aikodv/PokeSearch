@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+body{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.buttons{
+    border-radius:100px;
+    width:50px;
+}
+
+.normal_type{
+    position:absolute; 
+    top:370px; 
+    left:870px
+}
+
+.fighting_type{
+    position:absolute;
+    top:175px;
+    left:1030px
+}
+.flying_type{
+    position:absolute;
+    top:240px;
+    left:1230px
+}
+.poison_type{
+    position:absolute;
+    top:510px;
+    left:1225px
+}
+.ground_type{
+    position:absolute;
+    top:440px;
+    left:1265px
+}
+.rock_type{
+    position:absolute;
+    top:560px;
+    left:1180px
+}
+.bug_type{
+    position:absolute;
+    top:300px;
+    left:1265px
+}
+.ghost_type{
+    position:absolute;
+    top:370px;
+    left:1273px
+}
+.steel_type{
+    position:absolute;
+    top:190px;
+    left:1170px
+}
+.fire_type{
+    position:absolute;
+    top:580px;
+    left:1120px
+}
+.water_type{
+    position:absolute;
+    top:170px;
+    left:1100px
+}
+.grass_type{
+    position:absolute;
+    top:200px;
+    left:970px;
+}
+.electric_type{
+    position:absolute;
+    top:300px;
+    left:885px;
+}
+.psychic_type{
+    position:absolute;
+    top:240px;
+    left:920px;
+}
+.ice_type{
+    position:absolute;
+    top:440px;
+    left:885px;
+}
+.dragon_type{
+    position:absolute;
+    top:510px;
+    left:920px;
+}
+.dark_type{
+    position:absolute;
+    top:560px;
+    left:975px;
+}
+.fairy_type{
+    position:absolute;
+    top:575px;
+    left:1050px;
+}
+
+.oak{
+    position:absolute;
+    top:210px;
+    left:-40px;
+    
+}
+.type_dialoge{
+    position:absolute;
+    top:210px;
+    left:360px;
+
+  }
+  
+  .type_dialoge:hover img {
+    transform: scale(1.2);
+}
+.pokeball{
+    position:absolute;
+    top:200px;
+    left:900px;
+    z-index: -1;
+}
+.logo{
+    position:absolute;
+    top:15px;
+    left:15px;
+}
+
+
+
+
+
+.photo{
+
+    overflow: hidden;
+  }
+  
+  img {
+    transition: transform 0.25s;
+  }
+  
+  .photo:hover img {
+    transform: scale(1.4);
+  }
