@@ -95,19 +95,58 @@
                             <button title="Yellow" type="submit"  name="pokemon" style="border-radius:100px" value='yellow'><img src="{% static 'img/colors/yellow.png' %}" style="width:50px;"></button>
                         </div>
                     </div>
-
                     <form/>
                 </h3>
             
             {% elif lista_epica_color%}
             <h3>
-                <h1 style="color:yellow";>ESTOS SON TODOS LOS POKEMONS TIPO: {{name}}</h1>
-                <h1 style="font-size: 2.5%"style="color:white";> {{lista_epica_color}}</h1>                    
                 <form method="post">       
                     {% csrf_token %}    
                     <div class="photo">
                         <div class="one_generation">
                             <button title="One" type="submit"  name="pokemon" style="border-radius:100px" value='generation-i'><img src="{% static 'img/number_generations/one.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="two_generation">
+                            <button title="Two" type="submit"  name="pokemon" style="border-radius:100px" value='generation-ii'><img src="{% static 'img/number_generations/two.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="photo">
+                        <div class="three_generation">
+                            <button title="Three" type="submit"  name="pokemon" style="border-radius:100px" value='generation-iii'><img src="{% static 'img/number_generations/three.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="four_generation">
+                            <button title="Four" type="submit"  name="pokemon" style="border-radius:100px" value='generation-iv'><img src="{% static 'img/number_generations/four.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="five_generation">
+                            <button title="Five" type="submit"  name="pokemon" style="border-radius:100px" value='generation-v'><img src="{% static 'img/number_generations/five.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="six_generation">
+                            <button title="Six" type="submit"  name="pokemon" style="border-radius:100px" value='generation-vi'><img src="{% static 'img/number_generations/six.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="seven_generation">
+                            <button title="Seven" type="submit"  name="pokemon" style="border-radius:100px" value='generation-vii'><img src="{% static 'img/number_generations/seven.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="eight_generation">
+                            <button title="Eight" type="submit"  name="pokemon" style="border-radius:100px" value='generation-viii'><img src="{% static 'img/number_generations/eight.png' %}" style="width:50px;"></button>
                         </div>
                     </div>
                 <form/>
@@ -116,13 +155,22 @@
                 <form method="post">
                     {% csrf_token %} 
                     <h3>
-                        <h1 style="color:yellow";>ESTOS SON TODOS LOS POKEMONS TIPO: {{name}}</h1>
-                        <h1 style="font-size: 2.5%"style="color:white";> {{lista_epica_color}}</h1>   
+                        <h1 style="color:yellow";>Tu pokemon puede evolucionar</h1>
                     <h3/>
-                <form/>
-            
+                    <div class="photo">
+                        <div class="yes_evolution">
+                            <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_evolution'>Yes</button>
+                        </div>
+                    </div>
 
-                
+                    <div class="photo">
+                        <div class="not_evolution">
+                            <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution'>Not</button>
+                        </div>
+                    </div>
+                <form/>
+            {% elif lista_epica_evolution or lista_epica_not_evolution %}
+                <h1 style="color:yellow";>En REPARACIONES</h1>
             {% else %}
             <div>
                 <div class="pikachu">

@@ -50,23 +50,11 @@ def intersect(request,generation,type):
     list_poke = list_pokemon(request,type)
     list_intersect = [x for x in list_gen if x in list_poke]
     return list_intersect
-# Check if the Pokemons on a list can evolve and make a list with those that can evolve
-def check_evolution(request,list_pokemon):
-    list_evolution = []
-    for i in range(len(list_pokemon)):
-        url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-species/{list_pokemon[i]}')
-        url_pokeapi.add_header('User-Agent', "pikachu")
-        source = urllib.request.urlopen(url_pokeapi).read()
-        list_of_data = json.loads(source)
-        if list_of_data['evolves_from_species'] != None:
-            list_evolution.append(list_pokemon[i])
-    return list_evolution
 
 
- 
 def pokeindex(request):
     try:
-        if request.method == 'POST':
+        if request.method == 'POST': 
             pokemon = request.POST['pokemon'].lower()
             pokemon = pokemon.replace(' ', '%20')
             respuesta = (pokemon)
@@ -106,9 +94,19 @@ def pokeindex(request):
                     }
 
                 return render(request, "main/pokeindex.html", data)
+            if respuesta in ["legendary"]:
+                url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/characteristic/1')
+                url_pokeapi.add_header('User-Agent', "poison")
+                source = urllib.request.urlopen(url_pokeapi).read()
+                list_of_data = json.loads(source)
+                
+                data = {
+                    "name": str(list_of_data['name']),
+                    "lista_epica_legendary": list_legendary(request),
+                    }
+
+                return render(request, "main/pokeindex.html", data)
             
-
-
         else:
             data = {}
         return render(request, "main/pokeindex.html", data)
@@ -166,7 +164,6 @@ def index(request):
                 "sprite2": str(list_of_data['sprites']['front_shiny']), 
                 "type": types,
                 "generation": str(list_of_data['game_indices'][0]['version']['name']).capitalize(),
-
             }
 
         else:
@@ -175,4 +172,3 @@ def index(request):
     except HTTPError as e:
         if e.code == 404:
             return render(request, "main/404.html")
-
