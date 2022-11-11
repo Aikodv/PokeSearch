@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../../static/css/styles.css">
+    <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
+    <title>PokeSearch</title>
+</head>
+
+<body style="background: linear-gradient(to right, #5dc1b9,#ffff, #5dc1b9);">
+    
+    <h1> <a style="color:white"href="http://127.0.0.1:8000/pokedex">Pokedex </a></h1>   
+    <div class="logo">
+        <img src="{% static 'img/pokesearch.png' %}" class="image" style="width:300px;">
+        <div/>
+        <div>
+            {% if lista_epica_type%}
+                <h3>
+                    <div class="pikachu1">
+                        <img src="{% static 'img/thereal_pikachu.png' %}" style="width:250px;">
+                    </div>
+
+                    <div class="psyduck">
+                        <img src="{% static 'img/psyduck.png' %}" style="width:200px;">
+                    </div>
+                    
+                    <div class="color_dialoge">
+                        <img src="{% static 'img/color_dialoge.png' %}" style="width:400px;">
+                    </div>
+                 
+                    <form method="post">       
+                        {% csrf_token %}    
+                    <div class="photo">
+                        <div class="black">
+                            <button title="Black" type="submit"  name="pokemon" style="border-radius:100px" value='black'><img src="{% static 'img/colors/black.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="blue">
+                            <button title="Blue" type="submit"  name="pokemon" style="border-radius:100px" value='blue'><img src="{% static 'img/colors/blue.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="brown">
+                            <button title="Brown" type="submit"  name="pokemon" style="border-radius:100px" value='brown'><img src="{% static 'img/colors/brown.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="photo">
+                        <div class="gray">
+                            <button title="Gray" type="submit"  name="pokemon" style="border-radius:100px" value='gray'><img src="{% static 'img/colors/gray.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="green">
+                            <button title="Green" type="submit"  name="pokemon" style="border-radius:100px" value='green'><img src="{% static 'img/colors/green.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="pink">
+                            <button title="Pink" type="submit"  name="pokemon" style="border-radius:100px" value='pink'><img src="{% static 'img/colors/pink.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="photo">
+                        <div class="purple">
+                            <button title="Purple" type="submit"  name="pokemon" style="border-radius:100px" value='purple'><img src="{% static 'img/colors/purple.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="red">
+                            <button title="Red" type="submit"  name="pokemon" style="border-radius:100px" value='red'><img src="{% static 'img/colors/red.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="white">
+                            <button title="White" type="submit"  name="pokemon" style="border-radius:100px" value='white'><img src="{% static 'img/colors/white.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="yellow">
+                            <button title="Yellow" type="submit"  name="pokemon" style="border-radius:100px" value='yellow'><img src="{% static 'img/colors/yellow.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <form/>
+                </h3>
+            
+            {% elif lista_epica_color%}
+            <h3>
+                <h1 style="color:yellow";>ESTOS SON TODOS LOS POKEMONS TIPO: {{name}}</h1>
+                <h1 style="font-size: 2.5%"style="color:white";> {{lista_epica_color}}</h1>                    
+                <form method="post">       
+                    {% csrf_token %}    
+                    <div class="photo">
+                        <div class="one_generation">
+                            <button title="One" type="submit"  name="pokemon" style="border-radius:100px" value='generation-i'><img src="{% static 'img/number_generations/one.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+                <form/>
+            </h3>
+            {% elif lista_epica_generacion%}
+                <form method="post">
+                    {% csrf_token %} 
+                    <h3>
+                        <h1 style="color:yellow";>ESTOS SON TODOS LOS POKEMONS TIPO: {{name}}</h1>
+                        <h1 style="font-size: 2.5%"style="color:white";> {{lista_epica_color}}</h1>   
+                    <h3/>
+                <form/>
+            
+
+                
+            {% else %}
+            <div>
+                <div class="pikachu">
+                    <a title ="Easter_Egg"  href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran"> <img src="{% static 'img/thereal_pikachu.png' %}" style="width:5px;"></a>
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    
+                    <div class="photo">
+                        <div class="normal_type">
+                            <button title="Normal" type="submit"  name="pokemon" style="border-radius:100px" value='normal'><img src="{% static 'img/normal.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="fighting_type">
+                            <button title="Fighting" type="submit" name="pokemon" style="border-radius:100px" value='fighting'><img src="{% static 'img/fighting.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="flying_type">
+                            <button title="Flying" type="submit" name="pokemon" style="border-radius:100px" value='flying'><img src="{% static 'img/flying.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="poison_type">
+                            <button title="Poison" type="submit" name="pokemon" style="border-radius:100px" value='poison'><img src="{% static 'img/poison.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="ground_type">
+                            <button title="Ground" type="submit" name="pokemon" style="border-radius:100px" value='ground'><img src="{% static 'img/ground.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+                    <div class="photo">
+                        <div class="rock_type">
+                            <button title="Rock" type="submit" name="pokemon" style="border-radius:100px" value='rock'><img src="{% static 'img/rock.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="bug_type">
+                            <button title="Bug" type="submit" name="pokemon" style="border-radius:100px" value='bug'><img src="{% static 'img/bug.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="ghost_type">
+                            <button title="Ghost" type="submit" name="pokemon" style="border-radius:100px" value='ghost'><img src="{% static 'img/ghost.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+                        
+                    <div class="photo">
+                        <div class="steel_type">
+                            <button title="Steel" type="submit" name="pokemon" style="border-radius:100px" value='steel'><img src="{% static 'img/steel.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="fire_type">
+                            <button title="Fire" type="submit" name="pokemon" style="border-radius:100px" value='fire'><img src="{% static 'img/fire.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="water_type">
+                            <button title="Water" type="submit" name="pokemon" style="border-radius:100px" value='water'><img src="{% static 'img/water.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="grass_type">
+                            <button title="Grass" type="submit" name="pokemon" style="border-radius:100px" value='grass'><img src="{% static 'img/grass.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="electric_type">
+                            <button title="Electric" type="submit" name="pokemon" style="border-radius:100px" value='electric'><img src="{% static 'img/electric.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="photo">
+                        <div class="psychic_type">
+                            <button title="Psychic" type="submit" name="pokemon" style="border-radius:100px" value='psychic'><img src="{% static 'img/psychic.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                        <div class="ice_type">
+                            <button title="Ice"type="submit" name="pokemon" style="border-radius:100px" value='ice'><img src="{% static 'img/ice.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+                    
+                        <div class="dragon_type">
+                            <button title="Dragon"type="submit" name="pokemon" style="border-radius:100px" value='dragon'><img src="{% static 'img/dragon.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+
+                        <div class="dark_type">
+                            <button title="Dark"type="submit" name="pokemon" style="border-radius:100px" value='dark'><img src="{% static 'img/dark.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+
+                    <div class="photo">
+
+                        <div class="fairy_type">
+                            <button title="Fairy"type="submit" name="pokemon" style="border-radius:100px" value='fairy'><img src="{% static 'img/fairy.png' %}" style="width:50px;"></button>
+                        </div>
+                    </div>
+                
+
+                <form/>
+            </div>
+            <div>
+                <div class="oak">
+                    <img src="{% static 'img/profesor_oak.png' %}" style="width:650px;">
+                </div>
+                <div >
+                    <div class="type_dialoge">
+                        <img src="{% static 'img/type_dialoge.png' %}" style="width:500px;">
+                    </div>
+                <div/>
+                <div class="pokeball">
+                    <img src="{% static 'img/pokeball_pokemon.png' %}" style="width:400px;">
+                </div>
+            </div>
+            {% endif %}
+        </div>
+</body>
+</html>
