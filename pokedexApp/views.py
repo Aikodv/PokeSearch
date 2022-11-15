@@ -172,3 +172,6 @@ def index(request):
     except HTTPError as e:
         if e.code == 404:
             return render(request, "main/404.html")
+
+def home(request):
+    return render(request, "main/Homepage.html")
