@@ -10,10 +10,10 @@
 
 @keyframes slide {
   0% {
-    transform: translate3d(-13500px, 0, 0);
+    transform: translate3d(-10000px, 0, 0);
   }
   100% {
-    transform: translate3d(13500px, 0, 0); 
+    transform: translate3d(10000px, 0, 0); 
   }
 }
 
@@ -41,7 +41,7 @@ body{
 .palgif {
   position: relative;
   top: -178px;
-  opacity: 20%;
+  opacity: 80%;
   transform: scale(0.1);
 }
 
@@ -49,7 +49,7 @@ body{
   background: url(../img/pikachu-running.gif) repeat-x; 
   height: 321px;
   width: 438px;
-  animation: slide 30s linear infinite;
+  animation: slide 25s linear infinite;
 }
 
 .navbar ul li {

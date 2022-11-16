@@ -175,3 +175,6 @@ def index(request):
 
 def home(request):
     return render(request, "main/Homepage.html")
+
+def about_us(request):
+    return render(request,"main/sobrenosotros.html")
