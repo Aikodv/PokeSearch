@@ -6,17 +6,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
     <title>PokeSearch</title>
 </head>
 
-<body style="background: linear-gradient(to right, #5dc1b9,#ffff, #5dc1b9);">
+<body>
+    <div>
     
-    <h1> <a style="color:white"href="http://127.0.0.1:8000/pokedex">Pokedex </a></h1>   
-    <div class="logo">
-        <img src="{% static 'img/pokesearch.png' %}" class="image" style="width:300px;">
-        <div/>
+        <div class="barra">
+            <div class="navbar">
+                <img src="{% static 'img/pokesearch.png' %}" style="width:240px;" class="logo">
+                <ul>
+                    <li class="pokedex" ><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
+                    <li class="about"><a href="http://127.0.0.1:8000">About us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="palgif">
+            <div class="poggers"></div>
+        </div>
+
+    </div>    
         <div>
             {% if lista_epica_type%}
                 <h3>

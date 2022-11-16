@@ -1,167 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 20px;
 }
-html{
-    font-size: 62.5%;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+
+@keyframes slide {
+  0% {
+    transform: translate3d(-13500px, 0, 0);
+  }
+  100% {
+    transform: translate3d(13500px, 0, 0); 
+  }
 }
+
 body{
-    margin: 0 auto;
-    text-align: center;
+  background: linear-gradient(to left,#272727,#373737);
 }
 
+.barra{
+  background: linear-gradient(to right,#272727,#373737) 
+}
 
+.navbar{
+  width: 80%;
+  margin: auto;
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 130px;
+  cursor: pointer;
+}
+.palgif {
+  position: relative;
+  top: -178px;
+  opacity: 80%;
+  transform: scale(0.1);
+}
+
+.poggers {
+  background: url(../img/pikachu-running.gif) repeat-x; 
+  height: 321px;
+  width: 438px;
+  animation: slide 25s linear infinite;
+}
+
+.navbar ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: 'Roboto Slab', "sans-serif";
+  font-size: 1.2rem;
+}
+
+.navbar ul li::before {
+  content: "";
+  height: 3px;
+  width: 0%;
+  background: yellow;
+  position: absolute;
+  left: 0;
+  bottom: -13px;
+  transition: 0.5s ease-out;
+}
+
+.navbar ul li:hover::before {
+  width: 100%;
+
+}
 .buttons{
-    border-radius:100px;
-    width:50px;
+  border-radius:100px;
+  width:50px;
 }
 
 .normal_type{
-    position:absolute; 
-    top:370px; 
-    left:870px
+  position:absolute; 
+  top:370px; 
+  left:870px
 }
 
 .fighting_type{
-    position:absolute;
-    top:175px;
-    left:1030px
+  position:absolute;
+  top:175px;
+  left:1030px
 }
 .flying_type{
-    position:absolute;
-    top:240px;
-    left:1230px
+  position:absolute;
+  top:240px;
+  left:1230px
 }
 .poison_type{
-    position:absolute;
-    top:510px;
-    left:1225px
+  position:absolute;
+  top:510px;
+  left:1225px
 }
 .ground_type{
-    position:absolute;
-    top:440px;
-    left:1265px
+  position:absolute;
+  top:440px;
+  left:1265px
 }
 .rock_type{
-    position:absolute;
-    top:560px;
-    left:1180px
+  position:absolute;
+  top:560px;
+  left:1180px
 }
 .bug_type{
-    position:absolute;
-    top:300px;
-    left:1265px
+  position:absolute;
+  top:300px;
+  left:1265px
 }
 .ghost_type{
-    position:absolute;
-    top:370px;
-    left:1273px
+  position:absolute;
+  top:370px;
+  left:1273px
 }
 .steel_type{
-    position:absolute;
-    top:190px;
-    left:1170px
+  position:absolute;
+  top:190px;
+  left:1170px
 }
 .fire_type{
-    position:absolute;
-    top:580px;
-    left:1115px
+  position:absolute;
+  top:580px;
+  left:1115px
 }
 .water_type{
-    position:absolute;
-    top:170px;
-    left:1100px
+  position:absolute;
+  top:170px;
+  left:1100px
 }
 .grass_type{
-    position:absolute;
-    top:200px;
-    left:970px;
+  position:absolute;
+  top:200px;
+  left:970px;
 }
 .electric_type{
-    position:absolute;
-    top:300px;
-    left:885px;
+  position:absolute;
+  top:300px;
+  left:885px;
 }
 .psychic_type{
-    position:absolute;
-    top:240px;
-    left:920px;
+  position:absolute;
+  top:240px;
+  left:920px;
 }
 .ice_type{
-    position:absolute;
-    top:440px;
-    left:885px;
+  position:absolute;
+  top:440px;
+  left:885px;
 }
 .dragon_type{
-    position:absolute;
-    top:510px;
-    left:920px;
+  position:absolute;
+  top:510px;
+  left:920px;
 }
 .dark_type{
-    position:absolute;
-    top:560px;
-    left:975px;
+  position:absolute;
+  top:560px;
+  left:975px;
 }
 .fairy_type{
-    position:absolute;
-    top:580px;
-    left:1045px;
+  position:absolute;
+  top:580px;
+  left:1045px;
 }
 
 .oak{
-    position:absolute;
-    top:210px;
-    left:-40px;
-    
+  position:absolute;
+  top:230px;
+  left:-40px;
+  
 }
 .type_dialoge{
-    position:absolute;
-    top:190px;
-    left:360px;
+  position:absolute;
+  top:190px;
+  left:360px;
 
-  }
-  
-  .type_dialoge:hover img {
-    transform: scale(1.2);
+}
+
+.type_dialoge:hover img {
+  transform: scale(1.2);
 }
 .pokeball{
-    position:absolute;
-    top:200px;
-    left:900px;
-    z-index: -1;
-}
-.logo{
-    position:absolute;
-    top:15px;
-    left:15px;
+  position:absolute;
+  top:200px;
+  left:900px;
+  z-index: -1;
 }
 
 .pikachu{
-    position:absolute;
-    top:615px;
-    left:500px;
-    z-index: 2;
-    }
-  
-  .pikachu:hover img {
-    transform: scale(15);
+  position:absolute;
+  top:615px;
+  left:500px;
+  z-index: 2;
+  }
+
+.pikachu:hover img {
+  transform: scale(15);
 }
 .photo{
 
     overflow: hidden;
   }
-  
+
   img {
     transition: transform 0.25s;
   }
-  
+
   .photo:hover img {
     transform: scale(1.4);
   }
-
-.black{
+  .black{
     position:absolute;
     top:350px;
     left:675px;
@@ -227,17 +289,16 @@ body{
     top:170px;
     left:500px;
 }
+.color_dialoge:hover img {
+  transform: scale(1.2);
+  }
+  .psyduck:hover img {
+  transform: scale(1.2);
+  }
+  .pikachu1:hover img {
+  transform: scale(1.2);
+  }
+  .pikachu:hover img {
+  transform: scale(1.2);
+  }
   
-    .color_dialoge:hover img {
-    transform: scale(1.2);
-    }
-    .psyduck:hover img {
-    transform: scale(1.2);
-    }
-    .pikachu1:hover img {
-    transform: scale(1.2);
-    }
-    .pikachu:hover img {
-    transform: scale(1.2);
-    }
-    
