@@ -178,7 +178,6 @@ def pokeindex(request):
 
 
 def index(request):
-
     try:
         if request.method == 'POST':
             pokemon = request.POST['pokemon'].lower()
@@ -186,11 +185,14 @@ def index(request):
             url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
             url_pokeapi.add_header('User-Agent', "pikachu")
             source = urllib.request.urlopen(url_pokeapi).read()
+            if pokemon == "":
+                data={}
+                return render(request, "main/404.html", data)
 
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
             list_of_data = json.loads(source)
-                
+
             # La variable 'data' guardará todo lo que vamos a renderizar en HTML
             # Las llaves y valores las provee la API de Pokemon
 
@@ -208,9 +210,11 @@ def index(request):
                 "height": str(height_rounded)+ " m",
                 "weight": str(weight_rounded)+ " kg",
                 "sprite": str(list_of_data['sprites']['front_default']),
-            }
 
-            print(data)
+                "sprite2": str(list_of_data['sprites']['front_shiny']), 
+                #"generation": str(list_of_data['game_indices'][0]['version']['name']).capitalize(),
+            }   # Despues del 650 en adelante es una lista vacia :) 
+            
         else:
             data = {}
 
