@@ -168,7 +168,6 @@ def pokeindex(request):
                         # agregar a la lista vacia
                         list_legendary.append(pokemons[i])
                 if respuesta == "yes_legendary":
-                    create_txt(list_legendary,"legendarypokemon")
                     if len(list_legendary) == 1:
                         data = {
                             "pokemon_encontrado": list_legendary[0],
@@ -184,7 +183,6 @@ def pokeindex(request):
                     for x in list_legendary:
                         pokemons.remove(x)
                     
-                    create_txt(pokemons,"legendarypokemon")
                     if len(pokemons) == 1:
                         data = {
                             "pokemon_encontrado": pokemons[0],
@@ -210,7 +208,6 @@ def pokeindex(request):
                         # agregar a la lista vacia
                         list_mythical.append(pokemons[i])
                 if respuesta == "yes_mythical":
-                    create_txt(list_mythical,"mythicalpokemon")
                     if len(list_mythical) == 1:
                         data = {
                             "pokemon_encontrado": list_mythical[0],

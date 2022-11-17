@@ -13,9 +13,26 @@
 </head>
 
 <body>
+    <div>
+    
+        <div class="barra">
+            <div class="navbar">
+                <a title ="Easter_Egg"  href="http://127.0.0.1:8000/home"> <img src="{% static 'img/pokesearch.png' %}" style="width:200px;"></a>
+                <ul>
+                    <li class="pokedex" ><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
+                    <li class="about"><a href="http://127.0.0.1:8000">Guess</a></li>
+                    <li class="about"><a href="http://127.0.0.1:8000">About us</a></li>
 
+                </ul>
+            </div>
+        </div>
+
+        <div class="palgif">
+            <div class="poggers"></div>
+        </div>
+
+    </div>    
     <div> <!-"Imagen, Cuadro de texto, Boton"->
-        <img src="{% static 'img/pokesearch.png' %}" class="image" style="width:300px;">
         <form method="post">
             {% csrf_token %}
             <div>
