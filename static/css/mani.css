@@ -21,47 +21,7 @@ body{
   overflow: hidden;
   background: linear-gradient(to left,#272727,#373737);
 }
-.parent{
-  height: 2000px;
-  margin: 0 auto;
-  margin-top: 30px;
-  width: 90%;
-}
-.box{
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  animation-name: falling;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
 
-.box-1{
-  background: url(../img/pokeball_pokemon.png);
-  right: 60vw;
-  animation-duration: 6s;
-  @keyframes falling{
-    0%{
-      top: -10vh
-    }
-    100%{
-      top: 90vh
-    }
-  }
-}
-.box-2{
-  background: url(../img/pokeball_pokemon.png);
-  right: 70vw;
-  animation-duration: 9s;
-  @keyframes falling{
-    0%{
-      top: -10vh
-    }
-    100%{
-      top: 90vh
-    }
-  }
-}
 .barra{
   background: linear-gradient(to right,#272727,#373737) 
 }
@@ -69,7 +29,7 @@ body{
 .navbar{
   width: 80%;
   margin: auto;
-  padding: 30px 0;
+  padding: 20px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -126,18 +86,20 @@ body{
 
 }
 .container {
+  z-index:1;
+  width: 85%;
+  margin: 0px auto;
+  padding: 30px 0;
   position: relative;
-  top: -340px;
+  top: -360px;
   border-radius: 25px;
   background: rgb(211, 211, 211);
   display: table;
-  height: 700px;
-  margin: 5px auto;
   text-align: center;
-  width: 1700px;
 }
 
 .buttonplay {
+  top: -70px;
   position: relative;
   border-radius: 15px;
   margin-top: 60px ;
@@ -157,7 +119,7 @@ body{
 .container span {
   text-decoration: none;
   position: relative;
-  top: 40px;
+  top: -20px;
   font-size: 22px;
   margin: 5px ;
 }
