@@ -9,20 +9,31 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/mani.css">
     <script defer src="{% static 'js/main.js' %}"></script>
 </head>
-
 <body>
     <div class="barra">
         <div class="navbar">
-            <img src="{% static 'img/pokesearch.png' %}" style="width:240px;" class="logo">
+            <a href="http://127.0.0.1:8000/home"><img src="{% static 'img/pokesearch.png' %}" style="width:250px;" class="logo"></a>
         <ul>
             <li><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
-            <li><a href="http://127.0.0.1:8000">About us</a></li>
+            <li><a href="http://127.0.0.1:8000/about_us">About us</a></li>
         </ul>
         </div>
     </div>
     <div class="palgif">
         <div class="poggers"></div>
     </div>
+    <div class="container">
+        <span>¡Bienvenido a PokeSearch! Adivinaremos el pokemon en el que estas pensando con algunas preguntas. Tienes la barra de navegacion que cuenta con informacion sobre el proyecto y tambien una pokedex disponible en la que puedes buscar pokemones por nombre o usando su número de la Pokédex Nacional.</span>
+        <div class="buttonplay">
+            <img src="{% static 'img/pokemon_pokeballwp.jpg' %}" width="450" height="250">
+            <div class="post-s">
+                <h2><a href="http://127.0.0.1:8000">Play</a></h2>
+            </div> 
+        </div>
+        <span>No sé que poner XD</span> 
+    </div>
+    <div class="box box-1"></div>
+    <div class="box box-2"></div>
 </body>
 
 </html>
