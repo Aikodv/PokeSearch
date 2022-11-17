@@ -44,6 +44,28 @@ def list_generation(request,generation):
         list_pokemon.append(list_of_data['pokemon_species'][i]['name'])
     return list_pokemon
 
+#  validar si los pokemon de una lista pueden evolucionar
+def validate_evolution(request,pokemons):
+    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-species/{pokemons}')
+    url_pokeapi.add_header('User-Agent', "pikachu")
+    source = urllib.request.urlopen(url_pokeapi).read()
+    list_of_data = json.loads(source)
+    if list_of_data['evolves_from_species'] == None:
+        return False
+    else:
+        return True
+def validate_legendary(request,pokemons):
+    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-species/{pokemons}')
+    url_pokeapi.add_header('User-Agent', "pikachu")
+    source = urllib.request.urlopen(url_pokeapi).read()
+    list_of_data = json.loads(source)
+    if list_of_data['is_legendary'] == True:
+        return True
+    else:
+        return False
+
+
+
 
 def intersect(request,generation,type):
     list_gen = list_generation(request,generation)
@@ -68,6 +90,10 @@ def intersectar():
     return duplicates2
 
 print(intersectar())
+
+
+
+
 
 def pokeindex(request):
     try:
@@ -100,7 +126,7 @@ def pokeindex(request):
                     }
 
                 return render(request, "main/pokeindex.html", data)
-            if respuesta in ["generation-i","generation-ii","generation-iii","generation-vi","generation-v","generation-vi","generation-vii","generation-viii"]:
+            if respuesta in ["generation-i","generation-ii","generation-iii","generation-iv","generation-v","generation-vi","generation-vii","generation-viii"]:
                 url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/generation/{pokemon}')
                 url_pokeapi.add_header('User-Agent', "poison")
                 source = urllib.request.urlopen(url_pokeapi).read()
@@ -115,10 +141,36 @@ def pokeindex(request):
                     }
 
                 return render(request, "main/pokeindex.html", data)
-            
-      
-        else:
-            data = {}
+            if respuesta in ["yes_legendary","not_legendary"]:
+                pokemons = intersectar()
+                # pasar pokemons a una lista
+                pokemons = list(pokemons)
+                # crear una lista vacia
+                list_legendary = []
+                # recorrer la lista de pokemons
+                for i in range(len(pokemons)):
+                    # validar si es legendary
+                    if validate_legendary(request,pokemons[i]) == True:
+                        # agregar a la lista vacia
+                        list_legendary.append(pokemons[i])
+                if respuesta == "yes_legendary":
+                    create_txt(list_legendary,"legendarypokemon")
+                    data = {
+                        "lista_epica_legendary": list_legendary,
+                        }
+                    return render(request, "main/pokeindex.html", data)
+                if respuesta == "not_legendary":
+                    create_txt(list_legendary,"legendarypokemon")
+                    for x in list_legendary:
+                        pokemons.remove(x)
+                        print(pokemons)
+                    data = {
+                        "lista_epica_not_legendary": pokemons,
+                        }
+                    return render(request, "main/pokeindex.html", data)
+        else:    
+            data = {
+                }
         return render(request, "main/pokeindex.html", data)
     except HTTPError as e:
         if e.code == 404:

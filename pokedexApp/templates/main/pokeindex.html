@@ -16,7 +16,7 @@
     
         <div class="barra">
             <div class="navbar">
-                <img src="{% static 'img/pokesearch.png' %}" style="width:200px;" class="logo">
+                <a title ="Easter_Egg"  href="http://127.0.0.1:8000/home"> <img src="{% static 'img/pokesearch.png' %}" style="width:200px;"></a>
                 <ul>
                     <li class="pokedex" ><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
                     <li class="about"><a href="http://127.0.0.1:8000">Guess</a></li>
@@ -180,18 +180,20 @@
                     <h3/>
                     <div class="photo">
                         <div class="yes_evolution">
-                            <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_evolution'>Yes</button>
+                            <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_legendary'>Yes</button>
                         </div>
                     </div>
 
                     <div class="photo">
                         <div class="not_evolution">
-                            <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution'>Not</button>
+                            <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_legendary'>Not</button>
                         </div>
                     </div>
                 <form/>
-            {% elif lista_epica_evolution or lista_epica_not_evolution %}
-                <h1 style="color:yellow";>En REPARACIONES</h1>
+            {% elif lista_epica_legendary or lista_epica_not_legendary %}
+                <h1 style="color:yellow";>En REPARACIONES{{lista_epica_legendary}}}</h1>
+                <h1 style="color:yellow";>no{{lista_epica_not_legendary}}}</h1>
+
             {% else %}
             <div>
                 <div class="pikachu">
