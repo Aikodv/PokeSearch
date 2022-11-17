@@ -13,16 +13,16 @@
     transform: translate3d(-13500px, 0, 0);
   }
   100% {
-    transform: translate3d(13500px, 0, 0); 
+    transform: translate3d(10000px, 0, 0); 
   }
 }
 
 body{
-  background: linear-gradient(to left,#272727,#373737);
+  background: linear-gradient(to left,#744de9,#4028bd);
 }
 
 .barra{
-  background: linear-gradient(to right,#272727,#373737) 
+  background: linear-gradient(to right,#6841db,#bd4d28) 
 }
 
 .navbar{
@@ -41,7 +41,7 @@ body{
 .palgif {
   position: relative;
   top: -178px;
-  opacity: 80%;
+  opacity: 100%;
   transform: scale(0.1);
 }
 
@@ -49,7 +49,7 @@ body{
   background: url(../img/pikachu-running.gif) repeat-x; 
   height: 321px;
   width: 438px;
-  animation: slide 25s linear infinite;
+  animation: slide 10s linear infinite;
 }
 
 .navbar ul li {
@@ -302,3 +302,50 @@ body{
   transform: scale(1.2);
   }
   
+.one_generation{
+  position:absolute;
+  top:250px;
+  left:300px;
+
+}
+.two_generation{
+  position:absolute;
+  top:250px;
+  left:510px;
+}
+.three_generation{
+  position:absolute;
+  top:250px;
+  left:720px;
+}
+.four_generation{
+  position:absolute;
+  top:250px;
+  left:930px;
+}
+.five_generation{
+  position:absolute;
+  top:410px;
+  left:300px;
+}
+.six_generation{
+  position:absolute;
+  top:410px;
+  left:510px;
+}
+.seven_generation{
+  position:absolute;
+  top:410px;
+  left:720px;
+}
+.eight_generation{
+  position:absolute;
+  top:410px;
+  left:930px;
+}
+
+.dialoge_gen{
+  position:absolute;
+  top:170px;
+  left:500px;
+}

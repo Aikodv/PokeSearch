@@ -16,10 +16,12 @@
     
         <div class="barra">
             <div class="navbar">
-                <img src="{% static 'img/pokesearch.png' %}" style="width:240px;" class="logo">
+                <a title ="Easter_Egg"  href="http://127.0.0.1:8000/home"> <img src="{% static 'img/pokesearch.png' %}" style="width:200px;"></a>
                 <ul>
                     <li class="pokedex" ><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
+                    <li class="about"><a href="http://127.0.0.1:8000">Guess</a></li>
                     <li class="about"><a href="http://127.0.0.1:8000">About us</a></li>
+
                 </ul>
             </div>
         </div>
@@ -31,6 +33,7 @@
     </div>    
         <div>
             {% if lista_epica_type%}
+
                 <h3>
                     <div class="pikachu1">
                         <img src="{% static 'img/thereal_pikachu.png' %}" style="width:250px;">
@@ -114,56 +117,62 @@
             <h3>
                 <form method="post">       
                     {% csrf_token %}    
+                <div  class="dialoge_gen">
+                    <div  >
+                        <img src="{% static 'img/number_generations/dialogewh_gen.png' %}" style="width:400px;">
+                    </div>
+                </div>
                     <div class="photo">
                         <div class="one_generation">
-                            <button title="One" type="submit"  name="pokemon" style="border-radius:100px" value='generation-i'><img src="{% static 'img/number_generations/one.png' %}" style="width:50px;"></button>
+                            <button title="One" type="submit"  name="pokemon"  value='generation-i'><img src="{% static 'img/number_generations/one.png' %}" style="width:200px;" ></button>
                         </div>
                     </div>
 
                     <div class="photo">
                         <div class="two_generation">
-                            <button title="Two" type="submit"  name="pokemon" style="border-radius:100px" value='generation-ii'><img src="{% static 'img/number_generations/two.png' %}" style="width:50px;"></button>
+                            <button title="Two" type="submit"  name="pokemon"  value='generation-ii'><img src="{% static 'img/number_generations/two.png' %}" style="width:200px;"></button>
                         </div>
                     </div>
                     
                     <div class="photo">
                         <div class="three_generation">
-                            <button title="Three" type="submit"  name="pokemon" style="border-radius:100px" value='generation-iii'><img src="{% static 'img/number_generations/three.png' %}" style="width:50px;"></button>
+                            <button title="Three" type="submit"  name="pokemon" value='generation-iii'><img src="{% static 'img/number_generations/three.png' %}" style="width:200px;"></button>
                         </div>
                     </div>
 
                     <div class="photo">
                         <div class="four_generation">
-                            <button title="Four" type="submit"  name="pokemon" style="border-radius:100px" value='generation-iv'><img src="{% static 'img/number_generations/four.png' %}" style="width:50px;"></button>
+                            <button title="Four" type="submit"  name="pokemon" value='generation-iv'><img src="{% static 'img/number_generations/four.png' %}" style="width:200px;"></button>
                         </div>
                     </div>
 
                     <div class="photo">
                         <div class="five_generation">
-                            <button title="Five" type="submit"  name="pokemon" style="border-radius:100px" value='generation-v'><img src="{% static 'img/number_generations/five.png' %}" style="width:50px;"></button>
+                            <button title="Five" type="submit"  name="pokemon" value='generation-v'><img src="{% static 'img/number_generations/five.png' %}" style="width:200px;"></button>
                         </div>
                     </div>
 
                     <div class="photo">
                         <div class="six_generation">
-                            <button title="Six" type="submit"  name="pokemon" style="border-radius:100px" value='generation-vi'><img src="{% static 'img/number_generations/six.png' %}" style="width:50px;"></button>
+                            <button title="Six" type="submit"  name="pokemon"  value='generation-vi'><img src="{% static 'img/number_generations/six.png' %}" style="width:200px;"></button>
                         </div>
                     </div>
 
                     <div class="photo">
                         <div class="seven_generation">
-                            <button title="Seven" type="submit"  name="pokemon" style="border-radius:100px" value='generation-vii'><img src="{% static 'img/number_generations/seven.png' %}" style="width:50px;"></button>
+                            <button title="Seven" type="submit"  name="pokemon" value='generation-vii'><img src="{% static 'img/number_generations/seven.png' %}" style="width:200px;"></button>
                         </div>
                     </div>
 
                     <div class="photo">
                         <div class="eight_generation">
-                            <button title="Eight" type="submit"  name="pokemon" style="border-radius:100px" value='generation-viii'><img src="{% static 'img/number_generations/eight.png' %}" style="width:50px;"></button>
+                            <button title="Eight" type="submit"  name="pokemon" value='generation-viii'><img src="{% static 'img/number_generations/eight.png' %}" style="width:200px;"></button>
                         </div>
                     </div>
                 <form/>
             </h3>
             {% elif lista_epica_generacion%}
+            {{lista_epica_interseccion}}
                 <form method="post">
                     {% csrf_token %} 
                     <h3>
@@ -171,18 +180,20 @@
                     <h3/>
                     <div class="photo">
                         <div class="yes_evolution">
-                            <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_evolution'>Yes</button>
+                            <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_legendary'>Yes</button>
                         </div>
                     </div>
 
                     <div class="photo">
                         <div class="not_evolution">
-                            <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution'>Not</button>
+                            <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_legendary'>Not</button>
                         </div>
                     </div>
                 <form/>
-            {% elif lista_epica_evolution or lista_epica_not_evolution %}
-                <h1 style="color:yellow";>En REPARACIONES</h1>
+            {% elif lista_epica_legendary or lista_epica_not_legendary %}
+                <h1 style="color:yellow";>En REPARACIONES{{lista_epica_legendary}}}</h1>
+                <h1 style="color:yellow";>no{{lista_epica_not_legendary}}}</h1>
+
             {% else %}
             <div>
                 <div class="pikachu">
