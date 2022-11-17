@@ -7,35 +7,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'css/pokedex.css' %}" crossorigin="anonymous"/>
     <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
     <title>PokeSearch</title>
 </head>
-<body style="background: linear-gradient(to right, #2d2ad4,#E4d2f7, #D42a45);">
 
-    <img src="{% static 'img/pokesearch.png' %}" class="image" style="width:100px;">
-    <h2></h2>
-    <img src="{% static 'img/pikachu.png' %}" class="image" style="width:100px;">
-    
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="pokemon" placeholder="Search pokemon">
-        <button type="submit">Search</button>
-    </form>
-    <h1> <a href="http://127.0.0.1:8000">volver</a></h1>
+<body>
+
+    <div> <!-"Imagen, Cuadro de texto, Boton"->
+        <img src="{% static 'img/pokesearch.png' %}" class="image" style="width:300px;">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <input type="text" name="pokemon" placeholder="Pókemon o ID">
+            </div>
+            
+            <button class="button button5">Buscar </button>
+        </form>
+    </div>
+   
+
     <div>
         {% if number and name %}
-            <h3>
-                <p style="color:white";>Pokedex number: {{number}}</p>
-            </h3>
-            <h3>
-                <p style="color:white";>Name: {{name}}</p>
-            </h3>
-
-            <h3>
-                <p style="color:white";> Weight: {{weight}}</p>
-            </h3>
-
+        <h3>
+            <p style="color:#ffffff";>Pokedex number: {{number}}</p>           
+        </h3>
+        <h3>
+            <p style="color:white";>Name: {{name}}</p>
+        </h3>
+    
+        <h3>
+            <p style="color:white";> Weight: {{weight}}</p>
+        </h3>
+    
             <h3>
                 <p style="color:white";>Types: {{type}}</p>
             </h3>
@@ -44,15 +48,19 @@
             </h3>
             <img src="{{sprite}}" alt="{{name}} sprite" style="width:300px">
             <img src="{{sprite2}}" alt="{{name}} sprite" style="width:300px">
-
-
-        {% else %}
-        <div>
-            <h3>
-                <p style="color:white";>Write the name or ID of your pokemon.</p>
-            </h3>
+        
+        
+            {% else %}
+            <div>
+                <h3>
+                    <p style="color:rgb(0, 0, 0)";>Write the name or ID of your pokemon.</p>
+                </h3>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
+    
     </div>
+
+
 </body>
 </html>
