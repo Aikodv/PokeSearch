@@ -16,19 +16,12 @@
     
         <div class="barra">
             <div class="navbar">
-<<<<<<< HEAD
-                <a href="http://127.0.0.1:8000/home"><img src="{% static 'img/pokesearch.png' %}" style="width:250px;" class="logo"></a>
-                <ul>
-                    <li class="pokedex" ><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
-                    <li class="about"><a href="http://127.0.0.1:8000/about_us">About us</a></li>
-=======
                 <a title ="Easter_Egg"  href="http://127.0.0.1:8000/home"> <img src="{% static 'img/pokesearch.png' %}" style="width:200px;"></a>
                 <ul>
                     <li class="pokedex" ><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
                     <li class="about"><a href="http://127.0.0.1:8000">Guess</a></li>
                     <li class="about"><a href="http://127.0.0.1:8000">About us</a></li>
 
->>>>>>> 41c8d9fa1fbf0f539562294c69c8e68ca6dad464
                 </ul>
             </div>
         </div>
@@ -179,28 +172,50 @@
                 <form/>
             </h3>
             {% elif lista_epica_generacion%}
-            {{lista_epica_interseccion}}
                 <form method="post">
                     {% csrf_token %} 
                     <h3>
-                        <h1 style="color:yellow";>Tu pokemon puede evolucionar</h1>
+                        <h1 style="color:yellow";>Tu pokemon es legendario</h1>
                     <h3/>
                     <div class="photo">
-                        <div class="yes_evolution">
+                        <div class="yes_legendary">
                             <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_legendary'>Yes</button>
                         </div>
                     </div>
 
                     <div class="photo">
-                        <div class="not_evolution">
+                        <div class="not_legendary">
                             <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_legendary'>Not</button>
                         </div>
                     </div>
                 <form/>
+            
             {% elif lista_epica_legendary or lista_epica_not_legendary %}
-                <h1 style="color:yellow";>En REPARACIONES{{lista_epica_legendary}}}</h1>
-                <h1 style="color:yellow";>no{{lista_epica_not_legendary}}}</h1>
+                    <form method="post"> 
+                    {% csrf_token %} 
+                    <h3>
+                        <h1 style="color:yellow";>Tu pokemon es singular?</h1>
+                    <h3/>
+                    <div class="photo">
+                        <div class="yes_mithical">
+                            <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_mithical'>Yes</button>
+                        </div>
+                    </div>
 
+                    <div class="photo">
+                        <div class="not_mithical">
+                            <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_mithical'>Not</button>
+                        </div>
+                    </div>
+                <form/>
+            {% elif lista_epica_mithical or lista_epica_not_mithical %}
+                <h1 style="color:yellow";>tu pokemon es {{pokemon_encontrado}} </h1>
+                <img src="{{imagen}}" sprite" style="width:300px">
+            {% elif pokemon_encontrado %}
+                <h1 style="color:yellow";>tu pokemon es {{pokemon_encontrado}} </h1>
+                <img src="{{imagen}}" sprite" style="width:300px">
+
+                
             {% else %}
             <div>
                 <div class="pikachu">
@@ -209,7 +224,7 @@
                 
                 <form method="post">
                     {% csrf_token %}
-                    
+
                     
                     <div class="photo">
                         <div class="normal_type">

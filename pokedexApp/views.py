@@ -7,8 +7,6 @@ from django.http import FileResponse
 
 # Funciones para los path
 
- 
-
 # create a function to get the list of pokemon of a color
 def list_color(request,color):
     url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-color/'+str(color))
@@ -63,6 +61,16 @@ def validate_legendary(request,pokemons):
         return True
     else:
         return False
+def validate_mythical(request,pokemon):
+    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-species/{pokemon}')
+    url_pokeapi.add_header('User-Agent', "pikachu")
+    source = urllib.request.urlopen(url_pokeapi).read()
+    list_of_data = json.loads(source)
+    if list_of_data['is_mythical'] == True:
+        return True
+    else:
+        return False
+
 
 
 
@@ -91,8 +99,14 @@ def intersectar():
 
 print(intersectar())
 
-
-
+def get_image(request,pokemon):
+    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
+    url_pokeapi.add_header('User-Agent', "pikachu")
+    source = urllib.request.urlopen(url_pokeapi).read()
+    list_of_data = json.loads(source)
+    count_pokemon = len(list_of_data['sprites']['other']['official-artwork']['front_default'])
+    image = list_of_data['sprites']['other']['official-artwork']['front_default']
+    return image
 
 
 def pokeindex(request):
@@ -155,19 +169,76 @@ def pokeindex(request):
                         list_legendary.append(pokemons[i])
                 if respuesta == "yes_legendary":
                     create_txt(list_legendary,"legendarypokemon")
-                    data = {
-                        "lista_epica_legendary": list_legendary,
+                    if len(list_legendary) == 1:
+                        data = {
+                            "pokemon_encontrado": list_legendary[0],
+                            "imagen": get_image(request,list_legendary[0]),
                         }
-                    return render(request, "main/pokeindex.html", data)
+                        return render(request, "main/pokeindex.html", data)
+                    else:
+                        data = {
+                            "lista_pica_legendary": list_legendary,
+                            }
+                        return render(request, "main/pokeindex.html", data)
                 if respuesta == "not_legendary":
-                    create_txt(list_legendary,"legendarypokemon")
                     for x in list_legendary:
                         pokemons.remove(x)
-                        print(pokemons)
-                    data = {
-                        "lista_epica_not_legendary": pokemons,
+                    
+                    create_txt(pokemons,"legendarypokemon")
+                    if len(pokemons) == 1:
+                        data = {
+                            "pokemon_encontrado": pokemons[0],
+                            "lista_epica_not_legendary": pokemons,
+
                         }
-                    return render(request, "main/pokeindex.html", data)
+                        return render(request, "main/pokeindex.html", data)
+                    else:
+                        data = {
+                            "lista_epica_not_legendary": pokemons,
+                            }
+                        return render(request, "main/pokeindex.html", data)
+            if respuesta in ["yes_mythical","not_mythical"]:
+                pokemons = intersectar()
+                # pasar pokemons a una lista
+                pokemons = list(pokemons)
+                # crear una lista vacia
+                list_mythical = []
+                # recorrer la lista de pokemons
+                for i in range(len(pokemons)):
+                    # validar si es legendary
+                    if validate_mythical(request,pokemons[i]) == True:
+                        # agregar a la lista vacia
+                        list_mythical.append(pokemons[i])
+                if respuesta == "yes_mythical":
+                    create_txt(list_mythical,"mythicalpokemon")
+                    if len(list_mythical) == 1:
+                        data = {
+                            "pokemon_encontrado": list_mythical[0],
+                            "imagen": get_image(request,list_mythical[0]),
+                        }
+                        return render(request, "main/pokeindex.html", data)
+                    else:
+                        data = {
+                            "lista_pica_mythical": list_mythical,
+                            }
+                        return render(request, "main/pokeindex.html", data)
+                if respuesta == "not_mythical":
+                    for x in list_mythical:
+                        pokemons.remove(x)
+                    
+                    create_txt(pokemons,"mythicalpokemon")
+                    if len(pokemons) == 1:
+                        data = {
+                            "pokemon_encontrado": pokemons[0],
+                            "lista_epica_not_mythical": pokemons,
+
+                        }
+                        return render(request, "main/pokeindex.html", data)
+                    else:
+                        data = {
+                            "lista_epica_not_mythical": pokemons,
+                            }
+                        return render(request, "main/pokeindex.html", data)
         else:    
             data = {
                 }
@@ -178,6 +249,7 @@ def pokeindex(request):
 
 
 def index(request):
+
     try:
         if request.method == 'POST':
             pokemon = request.POST['pokemon'].lower()
@@ -185,14 +257,11 @@ def index(request):
             url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
             url_pokeapi.add_header('User-Agent', "pikachu")
             source = urllib.request.urlopen(url_pokeapi).read()
-            if pokemon == "":
-                data={}
-                return render(request, "main/404.html", data)
 
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
             list_of_data = json.loads(source)
-
+                
             # La variable 'data' guardará todo lo que vamos a renderizar en HTML
             # Las llaves y valores las provee la API de Pokemon
 
@@ -210,11 +279,9 @@ def index(request):
                 "height": str(height_rounded)+ " m",
                 "weight": str(weight_rounded)+ " kg",
                 "sprite": str(list_of_data['sprites']['front_default']),
+            }
 
-                "sprite2": str(list_of_data['sprites']['front_shiny']), 
-                #"generation": str(list_of_data['game_indices'][0]['version']['name']).capitalize(),
-            }   # Despues del 650 en adelante es una lista vacia :) 
-            
+            print(data)
         else:
             data = {}
 
