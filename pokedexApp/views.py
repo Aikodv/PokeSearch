@@ -3,9 +3,11 @@ import urllib.request
 import json
 from http import HTTPStatus
 from urllib.error import HTTPError
-
+from django.http import FileResponse
 
 # Funciones para los path
+
+ 
 
 # create a function to get the list of pokemon of a color
 def list_color(request,color):
@@ -31,7 +33,6 @@ def list_pokemon(request,type):
     return list_pokemon
 
 
-# create a function to get the list of pokemon of a generation
 def list_generation(request,generation):
     url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/generation/'+str(generation))
     url_pokeapi.add_header('User-Agent', "pikachu")
@@ -44,13 +45,29 @@ def list_generation(request,generation):
     return list_pokemon
 
 
-# intersect list_generation and list_pokemon
 def intersect(request,generation,type):
     list_gen = list_generation(request,generation)
     list_poke = list_pokemon(request,type)
     list_intersect = [x for x in list_gen if x in list_poke]
     return list_intersect
 
+def create_txt(list,namee):
+    f = open(str(namee)+".txt", "w")
+    for i in range(len(list)):
+        f.write(list[i] + "\n")
+    f.close()
+def intersectar():
+
+    words1 = set(open("typepokemon.txt").read().split())
+    words2 = set(open("colorpokemon.txt").read().split())
+    words3 = set(open("generationpokemon.txt").read().split())
+
+    duplicates  = words1.intersection(words2)
+    duplicates2 = duplicates.intersection(words3)
+
+    return duplicates2
+
+print(intersectar())
 
 def pokeindex(request):
     try:
@@ -63,7 +80,8 @@ def pokeindex(request):
                 url_pokeapi.add_header('User-Agent', "poison")
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
-                
+                create_txt(list_pokemon(request,pokemon),"typepokemon")
+    
                 data = {
                     "lista_epica_type": list_pokemon(request,str(list_of_data['name'])),
                     }
@@ -75,7 +93,7 @@ def pokeindex(request):
                 url_pokeapi.add_header('User-Agent', "poison")
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
-                
+                create_txt(list_color(request,pokemon),"colorpokemon")
                 data = {
                     "name": str(list_of_data['name']),
                     "lista_epica_color": list_color(request,str(list_of_data['name'])),
@@ -87,26 +105,18 @@ def pokeindex(request):
                 url_pokeapi.add_header('User-Agent', "poison")
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
-                
+                create_txt(list_generation(request,pokemon),"generationpokemon")
+
+
+            
                 data = {
                     "name": str(list_of_data['name']),
                     "lista_epica_generacion": list_generation(request,str(list_of_data['name'])),
                     }
 
                 return render(request, "main/pokeindex.html", data)
-            if respuesta in ["legendary"]:
-                url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/characteristic/1')
-                url_pokeapi.add_header('User-Agent', "poison")
-                source = urllib.request.urlopen(url_pokeapi).read()
-                list_of_data = json.loads(source)
-                
-                data = {
-                    "name": str(list_of_data['name']),
-                    "lista_epica_legendary": list_legendary(request),
-                    }
-
-                return render(request, "main/pokeindex.html", data)
             
+      
         else:
             data = {}
         return render(request, "main/pokeindex.html", data)
@@ -116,17 +126,14 @@ def pokeindex(request):
 
 
 def index(request):
+
     try:
         if request.method == 'POST':
             pokemon = request.POST['pokemon'].lower()
             pokemon = pokemon.replace(' ', '%20')
-            a = (pokemon)
             url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
             url_pokeapi.add_header('User-Agent', "pikachu")
             source = urllib.request.urlopen(url_pokeapi).read()
-            if a =="vaporeon":
-                data={}
-                return render(request, "main/404.html", data)
 
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
@@ -142,37 +149,23 @@ def index(request):
             # Peso de hectogramos a kilogramos
             weight_obtained = (float(list_of_data['weight']) * 0.1)
             weight_rounded = round(weight_obtained, 2)
-            # count abilities and create a list with them and create string with them
-            count_abilities = len(list_of_data['abilities'])
-            list_abilities = []
-            for i in range(count_abilities):
-                list_abilities.append(list_of_data['abilities'][i]['ability']['name'])
-            abilities = ', '.join(list_abilities)
-            # count types and create a list with them and create string with them
-            count_types = len(list_of_data['types'])
-            list_types = []
-            for i in range(count_types):
-                list_types.append(list_of_data['types'][i]['type']['name'])
-            types = ', '.join(list_types)      
-           
+
             data = {
                 "number": str(list_of_data['id']),
                 "name": str(list_of_data['name']).capitalize(),
                 "height": str(height_rounded)+ " m",
                 "weight": str(weight_rounded)+ " kg",
                 "sprite": str(list_of_data['sprites']['front_default']),
-                "sprite2": str(list_of_data['sprites']['front_shiny']), 
-                "type": types,
-                "generation": str(list_of_data['game_indices'][0]['version']['name']).capitalize(),
             }
 
+            print(data)
         else:
             data = {}
+
         return render(request, "main/index.html", data)
     except HTTPError as e:
         if e.code == 404:
             return render(request, "main/404.html")
-
 def home(request):
     return render(request, "main/Homepage.html")
 
