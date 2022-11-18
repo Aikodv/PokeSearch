@@ -8,6 +8,18 @@
   font-size: 24px;
 }
 
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 @keyframes slide {
   0% {
     transform: translate3d(-10000px, 0, 0);
@@ -19,7 +31,10 @@
 
 body{
   overflow: hidden;
-  background: linear-gradient(to left,#272727,#373737);
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
 }
 
 .barra{
@@ -83,17 +98,15 @@ body{
 
 .navbar ul li:hover::before {
   width: 100%;
-
 }
 .container {
-  z-index:1;
+  background: rgba(255, 255, 255, 0.4); 
   width: 85%;
   margin: 0px auto;
   padding: 30px 0;
   position: relative;
   top: -360px;
   border-radius: 25px;
-  background: rgb(211, 211, 211);
   display: table;
   text-align: center;
 }
@@ -104,11 +117,11 @@ body{
   border-radius: 15px;
   margin-top: 60px ;
   margin-left : 50px ;
-  margin-right : 50px ;
+  margin-right :50px ;
   vertical-align: bottom;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .container img {
@@ -118,6 +131,7 @@ body{
 
 .container span {
   text-decoration: none;
+  color: whitesmoke;
   position: relative;
   top: -20px;
   font-size: 22px;
@@ -131,18 +145,18 @@ h2{
 }
 
 .buttonplay:hover .post-s{
-  width: 450px;
+  width: 294px;
 }
 .post-s{
-  top: -50px;
-  border-radius: 15px;
+  top: -21px;
+  border-radius: 200px;
   margin-top: 50px ;
   margin-left : 50px ;
   margin-right : 50px ;
   vertical-align: bottom;
   width: 0px;
-  height: 250px;
-  background: rgba(216, 10, 10, 0.856);
+  height: 294px;
+  background: rgba(0, 0, 0, 0.856);
   position: absolute;
   display: flex;
   justify-content: space-around;
@@ -153,8 +167,8 @@ h2{
 .post-s h2{
   text-decoration: none;
   color: whitesmoke;
-  font-size: 50px;
-  border: 6px solid white;
+  font-size: 35px;
+  border: 4px solid white;
   border-radius: 10px;
   padding: 10px 30px;
   cursor: pointer;
