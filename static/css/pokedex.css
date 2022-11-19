@@ -45,7 +45,32 @@ body {
   width: 100%;
   text-align: center;
   position: absolute;
-  top: 140px;
+  top: 130px;
+}
+
+.dataso{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 40%;
+  right: 30%;
+}
+
+.foto{
+  position:absolute;
+  height:120px;
+  width: 200px;
+  top: 180px;
+  left: 620px;  
+  z-index: 1
+}
+
+.poked{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 180px;
+  left: 30%;
 }
 
 .button {

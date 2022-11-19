@@ -28,44 +28,41 @@
         <div class="poggers"></div>
     </div>
    
-    <!-"Imagen, Cuadro de texto, Boton"->
-
     <div class="cajita">    
         <form method="post">
             {% csrf_token %}
             <div>
                 <input type="text" name="pokemon" placeholder="Pokemon Name or ID">
-                <button class="button button5">Serach </button>
+                <button class="button button5">Search </button>
             </div>    
         </form>
     </div>    
     
-    <div>
+    <div class="poked">
+        {% if number and name%}
+        <img class="foto" src="{{sprite}}" alt="{{name}} sprite" style="width:120px">
+        {%endif%}
+        <img src="{% static 'img/Pokedex.png' %}" style="width:40%;">
+    </div>
 
+    <div class="dataso">
         {% if number and name %}
         <h3>
-            <p style="color:#ffffff";>Pokedex number: {{number}}</p>           
+            <p style="color:#000000";>Pokedex number ID: {{number}}</p>           
         </h3>
         <h3>
-            <p style="color:white";>Name: {{name}}</p>
+            <p style="color:rgb(0, 0, 0)";>Name: {{name}}</p>
         </h3>
         
         <h3>
-            <p style="color:white";> Weight: {{weight}}</p>
+            <p style="color:rgb(0, 0, 0)";> Weight: {{weight}}</p>
         </h3>
         
         <h3>
-            <p style="color:white";>Types: {{type}}</p>
+            <p style="color:black";>Types: {{type}}</p>
         </h3>
-        <h3>
-            <p style="color:white";>Default sprite: </p>
-        </h3>
-        <img src="{{sprite}}" alt="{{name}} sprite" style="width:300px">        
-        
         {% endif %}
-    </div>
-    
-    
+    </div>    
 
 </body>
 </html>
