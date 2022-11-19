@@ -7,7 +7,17 @@
   font-family: 'Roboto Slab', sans-serif;
   font-size: 20px;
 }
-
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 @keyframes slide {
   0% {
     transform: translate3d(-13500px, 0, 0);
@@ -18,11 +28,14 @@
 }
 
 body{
-  background: linear-gradient(to left,#744de9,#4028bd);
-}
+  overflow: hidden;
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;}
 
 .barra{
-  background: linear-gradient(to right,#6841db,#bd4d28) 
+  background: linear-gradient(to right,#272727,#373737) 
 }
 
 .navbar{
