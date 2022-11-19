@@ -8,6 +8,18 @@
   font-size: 24px;
 }
 
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 @keyframes slide {
   0% {
     transform: translate3d(-10000px, 0, 0);
@@ -16,11 +28,17 @@
     transform: translate3d(17000px, 0, 0); 
   }
 }
+
 .html {
     height: 100%;
 }
+
 body {
-background-image: linear-gradient(#0f0dace8,#6415b9ea);
+  overflow: hidden;
+	background: linear-gradient(-45deg, #ff0000, #a708e6, #0130b1);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
 }
 
 .button {
@@ -38,7 +56,7 @@ background-image: linear-gradient(#0f0dace8,#6415b9ea);
     position: relative;
     left: 30px;
     border-radius: 8px;
-    }
+}
         
 .button5:hover {
     background-color: #e90000;
@@ -48,14 +66,17 @@ background-image: linear-gradient(#0f0dace8,#6415b9ea);
     .disabled {
     opacity: 0.6;
     cursor: not-allowed;
-    }
+}
 
 input[type=text] {
-    width: 18%;
+    width: 16%;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 20px;
+
+    object-position:1px 10%;
+        
     background-color: white;
     background-image: url('https://www.w3schools.com/css/searchicon.png');
     background-position: 10px 10px; 
@@ -66,68 +87,75 @@ input[type=text] {
 
 input[type=text]:focus {
     width: 22%;
-    }
+}
+
+
+
+
+
+
+
 
 .barra{
     background: linear-gradient(to right,#272727,#373737) 
     }
     
 .navbar{
-width: 80%;
-margin: auto;
-padding: 30px 0;
-display: flex;
-align-items: center;
-justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-width: 130px;
-cursor: pointer;
+  width: 130px;
+  cursor: pointer;
 }
+
 .palgif {
-width: 80%;
-margin: 0%;
-padding: 30px 0;
-position: relative;
-top: -208px;
-opacity: 80%;
-transform: scale(0.1);
+  width: 80%;
+  margin: 0%;
+  padding: 30px 0;
+  position: relative;
+  top: -208px;
+  opacity: 80%;
+  transform: scale(0.1);
 }
 
 .poggers {
-background: url(../img/pikachu-running.gif) repeat-x; 
-height: 321px;
-width: 438px;
-animation: slide 13s linear infinite;
+  background: url(../img/pikachu-running.gif) repeat-x; 
+  height: 321px;
+  width: 438px;
+  animation: slide 13s linear infinite;
 }
 
 .navbar ul li {
-list-style: none;
-display: inline-block;
-margin: 0 20px;
-position: relative;
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
 }
 
 .navbar ul li a {
-text-decoration: none;
-color: whitesmoke;
-font-family: 'Roboto Slab', "sans-serif";
-font-size: 1.2rem;
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: 'Roboto Slab', "sans-serif";
+  font-size: 1.2rem;
 }
 
 .navbar ul li::before {
-content: "";
-height: 3px;
-width: 0%;
-background: yellow;
-position: absolute;
-left: 0;
-bottom: -13px;
-transition: 0.5s ease-out;
+  content: "";
+  height: 3px;
+  width: 0%;
+  background: yellow;
+  position: absolute;
+  left: 0;
+  bottom: -13px;
+  transition: 0.5s ease-out;
 }
 
 .navbar ul li:hover::before {
-width: 100%;
-
+  width: 100%;
 }
