@@ -175,22 +175,23 @@
             <form method="post">
                 {% csrf_token %} 
                 <h3>
-                    <h1 style="color:yellow";>Tu pokemon puede evolucionar</h1>
+                    <h1 style="color:yellow";>Tu pokemon es evolucion de otro</h1>
                 <h3/>
                 <div class="photo">
                     <div class="yes_evolution">
-                        <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_evolution-from-species'>Yes</button>
+                        <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_evolution'>Yes</button>
                     </div>
                 </div>
 
                 <div class="photo">
                     <div class="not_evolution">
-                        <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution-from-species'>Not</button>
+                        <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution'>Not</button>
                     </div>
                 </div>
             <form/>
                 
             {% elif lista_epica_evolution%}
+                {{lista_epica_evolution}}
                 <form method="post">
                     {% csrf_token %} 
                     <h3>
@@ -227,14 +228,27 @@
                         </div>
                     </div>
                 <form/>
-            {% elif lista_epica_mithical or lista_epica_not_mithical %}
-                <h1 style="color:yellow";>tu pokemon es {{pokemon_encontrado}} </h1>
-                <img src="{{imagen}}" sprite" style="width:300px">
+            {% elif pokemon_no_encontrado%}
+            <form method="post"> 
+                {% csrf_token %} 
+                <h3>
+                    <h1 style="color:yellow";>Tu pokemon es {{namess}}?</h1>
+                <h3/>
+                <div class="photo">
+                    <div class="yes">
+                        <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes'>Yes</button>
+                    </div>
+                </div>
+
+                <div class="photo">
+                    <div class="not">
+                        <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='no'>Not</button>
+                    </div>
+                </div>
+            <form/>
             {% elif pokemon_encontrado %}
                 <h1 style="color:yellow";>tu pokemon es {{pokemon_encontrado}} </h1>
                 <img src="{{imagen}}" sprite" style="width:300px">
-
-                
             {% else %}
             <div>
                 <div class="pikachu">

@@ -7,6 +7,16 @@ from django.http import FileResponse
 
 # Funciones para los path
 
+def intersectar():
+
+    words1 = set(open("typepokemon.txt").read().split())
+    words2 = set(open("colorpokemon.txt").read().split())
+    words3 = set(open("generationpokemon.txt").read().split())
+
+    duplicates  = words1.intersection(words2)
+    duplicates2 = duplicates.intersection(words3)
+
+    return list(duplicates2)
 # create a function to get the list of pokemon of a color
 def list_color(request,color):
     url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-color/'+str(color))
@@ -61,44 +71,53 @@ def validate_mythical(request,pokemon):
     else:
         return False
 
-# create a list with pokemons with chance evolution
-def list_evolution(request):
-    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/evolution-species')
+# cvalidate pokemons with chance evolution
+def validate_evolution(pokemon):
+    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
     url_pokeapi.add_header('User-Agent', "pikachu")
     source = urllib.request.urlopen(url_pokeapi).read()
     list_of_data = json.loads(source)
-    count_pokemon = len(list_of_data['results'])
-    list_pokemon = []
-    for i in range(count_pokemon):
-        list_pokemon.append(list_of_data['results'][i]['name'])
-    return list_pokemon
+    count_pokemon = len(list_of_data['species']['url'])
+    url_pokeapi2 = urllib.request.Request(f'{list_of_data["species"]["url"]}')
+    url_pokeapi2.add_header('User-Agent', "pikachu")
+    source2 = urllib.request.urlopen(url_pokeapi2).read()
+    list_of_data2 = json.loads(source2)
+    if list_of_data2['evolves_from_species'] == None:
+        return False
+    else:
+        return True
+
+
+# crear una lista a partir de un txt
+def create_list(name):
+    list = []
+    f = open(name+".txt", "r")
+    for x in f:
+        list.append(x.replace("\n",""))
+    return list
+
+# remover un pokemon de un txt
+def remove_pokemon(name):
+    list = []
+    f = open("mythicalpokemon.txt", "r")
+    for x in f:
+        list.append(x.replace("\n",""))
+    f.close()
+    list.remove(name)
+    f = open("mythicalpokemon.txt", "w")
+    for i in range(len(list)):
+        f.write(list[i] + "\n")
+    f.close()
 
 
 
-
-def intersect(request,generation,type):
-    list_gen = list_generation(request,generation)
-    list_poke = list_pokemon(request,type)
-    list_intersect = [x for x in list_gen if x in list_poke]
-    return list_intersect
 
 def create_txt(list,namee):
     f = open(str(namee)+".txt", "w")
     for i in range(len(list)):
         f.write(list[i] + "\n")
     f.close()
-def intersectar():
 
-    words1 = set(open("typepokemon.txt").read().split())
-    words2 = set(open("colorpokemon.txt").read().split())
-    words3 = set(open("generationpokemon.txt").read().split())
-
-    duplicates  = words1.intersection(words2)
-    duplicates2 = duplicates.intersection(words3)
-
-    return duplicates2
-
-print(intersectar())
 
 def get_image(request,pokemon):
     url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
@@ -148,27 +167,47 @@ def pokeindex(request):
                 list_of_data = json.loads(source)
                 create_txt(list_generation(request,pokemon),"generationpokemon")
 
-
-            
                 data = {
                     "name": str(list_of_data['name']),
                     "lista_epica_generacion": list_generation(request,str(list_of_data['name'])),
                     }
 
                 return render(request, "main/pokeindex.html", data)
-            if respuesta in ["yes_evolution-from-species","not_evolution-from-species"]:
-                if respuesta == "yes_evolution-from-species":
-                    data = {
-                        "lista_epica_evolution": list_evolution(request),
-                        }
-                else:
-                    data = {
-                        "lista_epica_evolution":"sexo",
-                        }
+            # tu  pokemon es una evolcion de un pokemon anterior 
 
+            if respuesta == "yes_evolution":
+                pokemons = list(intersectar())
+                print(pokemons)
+                a = []
+                for x in pokemons:
+                    print(x,validate_evolution(x))
+                    if validate_evolution(x) == True:
+                        a.append(x)
+                create_txt(a,"evolution")   
+                
+
+                data = {
+
+                    "lista_epica_evolution": a,
+                }
+                return render(request, "main/pokeindex.html", data)
+            
+            if respuesta == "not_evolution":
+                pokemons = list(intersectar())
+                a = []
+                for x in pokemons:
+                    print(x,validate_evolution(x))
+                    if validate_evolution(x) == False:
+                        a.append(x)
+                create_txt(a,"evolution")
+                data = {
+
+                    "lista_epica_evolution": a,
+                }
+                return render(request, "main/pokeindex.html", data)
 
             if respuesta in ["yes_legendary","not_legendary"]:
-                pokemons = intersectar()
+                pokemons = create_list("evolution")
                 # pasar pokemons a una lista
                 pokemons = list(pokemons)
                 # crear una lista vacia
@@ -207,8 +246,9 @@ def pokeindex(request):
                             "lista_epica_not_legendary": pokemons,
                             }
                         return render(request, "main/pokeindex.html", data)
+                        
             if respuesta in ["yes_mythical","not_mythical"]:
-                pokemons = intersectar()
+                pokemons = create_list("evolution")
                 # pasar pokemons a una lista
                 pokemons = list(pokemons)
                 # crear una lista vacia
@@ -240,14 +280,44 @@ def pokeindex(request):
                         data = {
                             "pokemon_encontrado": pokemons[0],
                             "lista_epica_not_mythical": pokemons,
+                            "imagen": get_image(request,pokemons[0]),
 
                         }
                         return render(request, "main/pokeindex.html", data)
                     else:
                         data = {
-                            "lista_epica_not_mythical": pokemons,
+                            "pokemon_no_encontrado": "tu pokemon es",  
+                            "namess": pokemons[0],
                             }
                         return render(request, "main/pokeindex.html", data)
+            if respuesta in ["yes","no"]:
+                pokemons = create_list("mythicalpokemon")
+                pokemons = list(pokemons)
+
+                if respuesta == "yes":
+                    print(pokemons[0])
+                    data = {
+                        "pokemon_encontrado": pokemons[0],
+                        "imagen": get_image(request,pokemons[0]),
+                    }
+                    return render(request, "main/pokeindex.html",data)
+                if respuesta == "no":
+                    remove_pokemon(pokemons[0])
+                    pokemons = create_list("mythicalpokemon")
+                    if len(pokemons) == 1:
+                        data = {
+                            "pokemon_encontrado": pokemons[0],
+                            "imagen": get_image(request,pokemons[0]),
+                        }
+                        return render(request, "main/pokeindex.html", data)
+                    print(pokemons)
+
+                    data = {
+                        "pokemon_no_encontrado": pokemons,
+                        "namess": pokemons[0],
+                    }
+                    return render(request, "main/pokeindex.html",data) 
+
         else:    
             data = {
                 }
