@@ -1,10 +1,4 @@
-blastoise
-poliwrath
-gyarados
-golduck
-seadra
-vaporeon
-wartortle
-omastar
-tentacruel
-poliwhirl
+pikachu
+electabuzz
+raichu
+jolteon

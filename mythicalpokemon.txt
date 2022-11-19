@@ -1,5 +1,1 @@
-vaporeon
-wartortle
-omastar
-tentacruel
-poliwhirl
+jolteon
