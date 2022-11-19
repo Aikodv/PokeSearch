@@ -172,29 +172,10 @@
                 <form/>
             </h3>
             {% elif lista_epica_generacion%}
-            <form method="post">
-                {% csrf_token %} 
-                <h3>
-                    <h1 style="color:yellow";>Tu pokemon puede evolucionar</h1>
-                <h3/>
-                <div class="photo">
-                    <div class="yes_evolution">
-                        <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_evolution-from-species'>Yes</button>
-                    </div>
-                </div>
-
-                <div class="photo">
-                    <div class="not_evolution">
-                        <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution-from-species'>Not</button>
-                    </div>
-                </div>
-            <form/>
-                
-            {% elif lista_epica_evolution%}
                 <form method="post">
                     {% csrf_token %} 
                     <h3>
-                        <h1 style="color:yellow";>Tu pokemon es legendario</h1>{{lista_epica_evolution}}
+                        <h1 style="color:yellow";>Tu pokemon es legendario</h1>
                     <h3/>
                     <div class="photo">
                         <div class="yes_legendary">

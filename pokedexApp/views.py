@@ -42,6 +42,16 @@ def list_generation(request,generation):
         list_pokemon.append(list_of_data['pokemon_species'][i]['name'])
     return list_pokemon
 
+#  validar si los pokemon de una lista pueden evolucionar
+def validate_evolution(request,pokemons):
+    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-species/{pokemons}')
+    url_pokeapi.add_header('User-Agent', "pikachu")
+    source = urllib.request.urlopen(url_pokeapi).read()
+    list_of_data = json.loads(source)
+    if list_of_data['evolves_from_species'] == None:
+        return False
+    else:
+        return True
 def validate_legendary(request,pokemons):
     url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-species/{pokemons}')
     url_pokeapi.add_header('User-Agent', "pikachu")
@@ -61,17 +71,6 @@ def validate_mythical(request,pokemon):
     else:
         return False
 
-# create a list with pokemons with chance evolution
-def list_evolution(request):
-    url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/evolution-species')
-    url_pokeapi.add_header('User-Agent', "pikachu")
-    source = urllib.request.urlopen(url_pokeapi).read()
-    list_of_data = json.loads(source)
-    count_pokemon = len(list_of_data['results'])
-    list_pokemon = []
-    for i in range(count_pokemon):
-        list_pokemon.append(list_of_data['results'][i]['name'])
-    return list_pokemon
 
 
 
@@ -156,17 +155,6 @@ def pokeindex(request):
                     }
 
                 return render(request, "main/pokeindex.html", data)
-            if respuesta in ["yes_evolution-from-species","not_evolution-from-species"]:
-                if respuesta == "yes_evolution-from-species":
-                    data = {
-                        "lista_epica_evolution": list_evolution(request),
-                        }
-                else:
-                    data = {
-                        "lista_epica_evolution":"sexo",
-                        }
-
-
             if respuesta in ["yes_legendary","not_legendary"]:
                 pokemons = intersectar()
                 # pasar pokemons a una lista
