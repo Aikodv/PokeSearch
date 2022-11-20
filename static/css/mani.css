@@ -186,3 +186,46 @@ a:visited {
   font-size: 50px;
 }
 
+.container h1 {
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 22px;
+}
+
+.navbar1 {
+  width: 80%;
+  margin: auto;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar1 ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+
+.navbar1 ul li a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: 'Roboto Slab', "sans-serif";
+  font-size: 1.2rem;
+}
+
+.navbar1 ul li::before {
+  content: "";
+  height: 3px;
+  width: 0%;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  left: 0;
+  bottom: -13px;
+  transition: 0.5s ease-out;
+}
+
+.navbar1 ul li:hover::before {
+  width: 100%;
+}
