@@ -39,14 +39,6 @@
                 <button class="button button5">Search </button>
             </div>    
         </form>
-    </div>    
-    
-    <!--Pokedex con Sprite-->
-    <div class="poked">
-        {% if number and name%}
-        <img class="foto" src="{{sprite}}" alt="{{name}} sprite" style="width:10%">
-        {%endif%}
-        <img src="{% static 'img/Pokedex.png' %}" style="width: 28%;">
     </div>
 
     <!--Datos de Información-->
@@ -59,12 +51,6 @@
         <div class="inf3"> Weight: {{weight}}</div>
 
         <div class="inf4"> Height: {{height}}</div>
-        
-        <!--
-            <h3>
-                <p style="color:black";>Types: {{type}}</p>
-            </h3>
-        -->
         {% endif %}
     </div>    
 

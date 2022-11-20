@@ -401,3 +401,36 @@ def home(request):
 
 def about_us(request):
     return render(request,"main/sobrenosotros.html")
+
+def guess(request):
+
+    try:
+        if request.method == 'POST':
+            pokemon = request.POST['pokemon'].lower()
+            pokemon = pokemon.replace(' ', '%20')
+            url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
+            url_pokeapi.add_header('User-Agent', "pikachu")
+            source = urllib.request.urlopen(url_pokeapi).read()
+
+            # Convirtiendo el JSON a un diccionario
+            # 'list_of_data' guardará todos los datos que estamos solicitando
+            list_of_data = json.loads(source)
+                
+            # La variable 'data' guardará todo lo que vamos a renderizar en HTML
+
+            data = {
+                "number": str(list_of_data['id']),
+                "name": str(list_of_data['name']).capitalize(),
+                "sprite": str(list_of_data['sprites']['front_default']),
+                "image": str(list_of_data['sprites']['other']['official-artwork']['front_default']),
+
+            }
+
+
+        else:
+            data = {}
+
+        return render(request, "main/index.html", data)
+    except HTTPError as e:
+        if e.code == 404:
+            return render(request, "main/404.html")
