@@ -49,19 +49,21 @@ body {
 }
 
 .dataso{
-  position: absolute;
-  width: 100%;
+  width: 70%;
+  height: 55%;
+  position: fixed;
   text-align: center;
+  font-family: 'Roboto Slab';
   top: 40%;
   right: 30%;
 }
 
 .foto{
   position:absolute;
-  height:120px;
-  width: 200px;
-  top: 180px;
-  left: 620px;  
+  width: 210px;
+  height:140px;
+  top: 28%;
+  left: 43%;  
   z-index: 1
 }
 
@@ -69,12 +71,12 @@ body {
   position: absolute;
   width: 100%;
   text-align: center;
-  top: 180px;
+  top: 25%;
   left: 30%;
 }
 
 .button {
-    background-color: #c97d0c; /* Green */
+    background-color: #c97d0c;
     border: 2px solid black;
     color: rgb(0, 0, 0);
     padding: 16px 32px;
@@ -95,7 +97,7 @@ body {
     color: rgb(0, 0, 0);
     }
 
-    .disabled {
+.disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }

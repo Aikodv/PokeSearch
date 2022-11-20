@@ -12,6 +12,8 @@
 </head>
 
 <body>
+
+    <!--TopBar-->
     <div class="barra">
         <div class="navbar">
             <a title ="Easter_Egg"  href="http://127.0.0.1:8000/home"> <img src="{% static 'img/pokesearch.png' %}" style="width:200px;"></a>
@@ -23,11 +25,11 @@
             </ul>
         </div>
     </div>
-
     <div class="palgif">
         <div class="poggers"></div>
     </div>
-   
+
+   <!--Buscar con Botón-->
     <div class="cajita">    
         <form method="post">
             {% csrf_token %}
@@ -38,24 +40,27 @@
         </form>
     </div>    
     
+    <!--Pokedex con Sprite-->
     <div class="poked">
         {% if number and name%}
-        <img class="foto" src="{{sprite}}" alt="{{name}} sprite" style="width:120px">
+        <img class="foto" src="{{sprite}}" alt="{{name}} sprite" style="width:10%">
         {%endif%}
-        <img src="{% static 'img/Pokedex.png' %}" style="width:40%;">
+        <img src="{% static 'img/Pokedex.png' %}" style="width: 28%;">
     </div>
 
+    <!--Datos de Información-->
     <div class="dataso">
         {% if number and name %}
+        
         <h3>
             <p style="color:#000000";>Pokedex number ID: {{number}}</p>           
         </h3>
         <h3>
-            <p style="color:rgb(0, 0, 0)";>Name: {{name}}</p>
+            <p style="color:rgb(0, 0, 0)";>Pokemon Name: {{name}}</p>
         </h3>
         
         <h3>
-            <p style="color:rgb(0, 0, 0)";> Weight: {{weight}}</p>
+            <p style="color:rgb(0, 0, 0)";>Human Weight: {{weight}}</p>
         </h3>
         
         <h3>
