@@ -1,1 +1,4 @@
-crabominable
+electabuzz
+jolteon
+pikachu
+raichu

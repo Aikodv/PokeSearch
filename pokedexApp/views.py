@@ -360,21 +360,28 @@ def index(request):
             types = []
             for i in range(len(list_of_data['types'])):
                 types.append(list_of_data['types'][i]['type']['name'])
+            # types to string
+            types = ', '.join(types)
             
             # Obteniendo las habilidades de pokemon
             abilities = []
             for i in range(len(list_of_data['abilities'])):
                 abilities.append(list_of_data['abilities'][i]['ability']['name'])
-
+            # abilities to string
+            abilities = ', '.join(abilities)
             # Obteniendo los movimientos de pokemon
             moves = []
             for i in range(len(list_of_data['moves'])):
                 moves.append(list_of_data['moves'][i]['move']['name'])
-
+            # moves to string 
+            moves = ', '.join(moves)
             # Obteniendo las estadísticas de pokemon
             stats = []
             for i in range(len(list_of_data['stats'])):
                 stats.append(list_of_data['stats'][i]['stat']['name'])
+            # stats to string
+            stats = ', '.join(stats)
+
 
             data = {
                 "number": str(list_of_data['id']),
