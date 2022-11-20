@@ -40,13 +40,13 @@
             {% csrf_token %}
             <div>
                 <input type="text" name="pokemon" placeholder="Pokemon Name or ID">
-                <button class="button button5">Search </button>
+                <button class="button button5">Guess </button>
             </div>    
         </form>
     </div>    
     <h1> <img src="{{image}}" style='filter: brightness(0);'alt="Pokemon Image"></h1>
     {% elif names and pokemon %}
-        ese era xd
+        <h1 class="ganar">ese era xd</h1>        
         <h1> <img src="{{pokemon}}" alt="Pokemon Image"></h1>
     
     {% elif hola and pokemons %}
@@ -56,7 +56,7 @@
             {% csrf_token %}
             <div>
                 <input type="text" name="pokemon" placeholder="Pokemon Name or ID">
-                <button class="button button5">Search </button>
+                <button class="button button5">Guess </button>
             </div>    
         </form>
     </div>    
