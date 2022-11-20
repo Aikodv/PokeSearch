@@ -362,7 +362,7 @@ def index(request):
                 types.append(list_of_data['types'][i]['type']['name'])
             # types to string
             types = ', '.join(types)
-            
+
             # Obteniendo las habilidades de pokemon
             abilities = []
             for i in range(len(list_of_data['abilities'])):
@@ -449,7 +449,7 @@ def guess(request):
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
             list_of_data = json.loads(source)
-            if respuesta == guess:
+            if respuesta == guess or respuesta== guess.capitalize():
                 data = {
                     "names":  guess,
                     "pokemon": str(list_of_data['sprites']['other']['official-artwork']['front_default']),

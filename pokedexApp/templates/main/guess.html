@@ -70,10 +70,11 @@
 
     <!--Estado inicial-->
     {% else %}
-     <div class="cajita">    
+
+     <div class="cajita2">    
         <form method="post">
             {% csrf_token %}
-            <button title="Play" type="submit"  name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:100px;"></button>
+            <button title="Play" type="submit"  name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:400px;"></button>
 
         </form>
     
