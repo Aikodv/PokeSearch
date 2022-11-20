@@ -1,1 +1,4 @@
-zapdos
+electabuzz
+raichu
+jolteon
+pikachu

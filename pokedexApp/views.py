@@ -355,12 +355,37 @@ def index(request):
             weight_obtained = (float(list_of_data['weight']) * 0.1)
             weight_rounded = round(weight_obtained, 2)
 
+            # Obteniendo los tipos de pokemon
+            types = []
+            for i in range(len(list_of_data['types'])):
+                types.append(list_of_data['types'][i]['type']['name'])
+            
+            # Obteniendo las habilidades de pokemon
+            abilities = []
+            for i in range(len(list_of_data['abilities'])):
+                abilities.append(list_of_data['abilities'][i]['ability']['name'])
+
+            # Obteniendo los movimientos de pokemon
+            moves = []
+            for i in range(len(list_of_data['moves'])):
+                moves.append(list_of_data['moves'][i]['move']['name'])
+
+            # Obteniendo las estadísticas de pokemon
+            stats = []
+            for i in range(len(list_of_data['stats'])):
+                stats.append(list_of_data['stats'][i]['stat']['name'])
+
             data = {
                 "number": str(list_of_data['id']),
                 "name": str(list_of_data['name']).capitalize(),
                 "height": str(height_rounded)+ " m",
                 "weight": str(weight_rounded)+ " kg",
                 "sprite": str(list_of_data['sprites']['front_default']),
+                "types": types,
+                "abilities": abilities,
+                "moves": moves,
+                "stats": stats,
+
             }
 
             print(data)
