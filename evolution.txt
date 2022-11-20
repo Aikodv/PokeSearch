@@ -1,4 +1,4 @@
-electabuzz
 raichu
+electabuzz
 jolteon
 pikachu
