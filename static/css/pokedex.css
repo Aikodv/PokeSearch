@@ -55,12 +55,12 @@ body {
   top: 35%;
   right: 30%;
   text-align: center;
-
 }
+
 .inf{
-  width: 290px;
+  width: 270px;
   height: 110px;  
-  padding: 25px;
+  padding: 15px;
   border-radius: 12px;
   font-family: 'Roboto Slab';
   background-color: #c97d0cfd;
@@ -86,14 +86,32 @@ body {
   border: 3px solid green;
   position: absolute;
   left: 50%;
-  top: 50% ;
+  top: 40% ;
+  height: 90px; 
 }
 
 .inf4{
   border: 3px solid #a708e6;
   position: absolute;
   left: 10%;
-  top: 50%;
+  top: 40%;
+  height: 90px; 
+}
+
+.inf5{
+  border: 3px solid #ebe708;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  height: 125px; 
+}
+
+.inf6{
+  border: 3px solid #08aaeb;
+  position: absolute;
+  left: 10%;
+  top: 70%;
+  height: 125px; 
 }
 
 .foto{
