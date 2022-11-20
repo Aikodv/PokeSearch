@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div>
+    <div style="height: 120px;">
     
         <div class="barra">
             <div class="navbar">
@@ -169,14 +169,14 @@
                             <button title="Eight" type="submit"  name="pokemon" value='generation-viii'><img src="{% static 'img/number_generations/eight.png' %}" style="width:200px;"></button>
                         </div>
                     </div>
-                <form/>
+                </form>
             </h3>
             {% elif lista_epica_generacion%}
             <form method="post">
                 {% csrf_token %} 
                 <h3>
                     <h1 style="color:yellow";>Tu pokemon es evolucion de otro</h1>
-                <h3/>
+                </h3>
                 <div class="photo">
                     <div class="yes_evolution">
                         <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_evolution'>Yes</button>
@@ -188,7 +188,7 @@
                         <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution'>Not</button>
                     </div>
                 </div>
-            <form/>
+            </form>
                 
             {% elif lista_epica_evolution%}
                 {{lista_epica_evolution}}
@@ -196,7 +196,7 @@
                     {% csrf_token %} 
                     <h3>
                         <h1 style="color:yellow";>Tu pokemon es legendario</h1>{{lista_epica_evolution}}
-                    <h3/>
+                    </h3>
                     <div class="photo">
                         <div class="yes_legendary">
                             <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_legendary'>Yes</button>
@@ -208,14 +208,14 @@
                             <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_legendary'>Not</button>
                         </div>
                     </div>
-                <form/>
+                </form>
             
             {% elif lista_epica_legendary or lista_epica_not_legendary %}
                     <form method="post"> 
                     {% csrf_token %} 
                     <h3>
                         <h1 style="color:yellow";>Tu pokemon es singular?</h1>
-                    <h3/>
+                    </h3>
                     <div class="photo">
                         <div class="yes_mithical">
                             <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_mythical'>Yes</button>
@@ -227,13 +227,13 @@
                             <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_mythical'>Not</button>
                         </div>
                     </div>
-                <form/>
+                </form>
             {% elif pokemon_no_encontrado%}
             <form method="post"> 
                 {% csrf_token %} 
                 <h3>
                     <h1 style="color:yellow";>Tu pokemon es {{namess}}?</h1>
-                <h3/>
+                </h3>
                 <div class="photo">
                     <div class="yes">
                         <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes'>Yes</button>
@@ -245,7 +245,7 @@
                         <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='no'>Not</button>
                     </div>
                 </div>
-            <form/>
+            </form>
             {% elif pokemon_encontrado %}
                 <h1 style="color:yellow";>tu pokemon es {{pokemon_encontrado}} </h1>
                 <img src="{{imagen}}" sprite" style="width:300px">
@@ -370,7 +370,7 @@
                     </div>
                 
 
-                <form/>
+                </form>
             </div>
             <div>
                 <div class="oak">
@@ -380,7 +380,7 @@
                     <div class="type_dialoge">
                         <img src="{% static 'img/type_dialoge.png' %}" style="width:500px;">
                     </div>
-                <div/>
+                </div>
                 <div class="pokeball">
                     <img src="{% static 'img/pokeball_pokemon.png' %}" style="width:400px;">
                 </div>
