@@ -57,53 +57,43 @@ body {
   text-align: center;
 
 }
-
-.inf1{
-  width: 300px;
-  height: 120px;  
+.inf{
+  width: 290px;
+  height: 110px;  
   padding: 25px;
-  border: 3px solid red;
   border-radius: 12px;
   font-family: 'Roboto Slab';
   background-color: #c97d0cfd;
   text-align: center;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
 
+.inf1{
+  border: 3px solid red;
   position: absolute;
   left: 10%;
   top: 5%;
 }
 
-.inf2{
-  width: 300px;
-  height: 120px;  
-  padding: 25px;
+.inf2{ 
   border: 3px solid blue;
-  border-radius: 12px;
-  font-family: 'Roboto Slab';
-  background-color: #c97d0cfd;
-  text-align: center;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-
   position: absolute;
   left:50%;
   top: 5%;
 }
 
 .inf3{
-  width: 300px;
-  height: 100px;  
-  padding: 25px;
   border: 3px solid green;
-  border-radius: 12px;
-  font-family: 'Roboto Slab';
-  background-color: #c97d0cfd;
-  text-align: center;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-
   position: absolute;
-  left: 30%;
+  left: 50%;
   top: 50% ;
+}
+
+.inf4{
+  border: 3px solid #a708e6;
+  position: absolute;
+  left: 10%;
+  top: 50%;
 }
 
 .foto{

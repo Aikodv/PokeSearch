@@ -52,19 +52,17 @@
     <!--Datos de Información-->
     <div class="dataso">
         {% if number and name %}
-        <div class="inf1">Pokedex number ID: {{number}}</div>
+        <div class="inf inf1">Pokedex number ID: {{number}}</div>
 
-        <div class="inf2">Pokemon Name: {{name}}</div>
+        <div class="inf inf2">Pokemon Name: {{name}}</div>
         
-        <div class="inf3"> Weight: {{weight}}</div>
+        <div class="inf inf3"> Weight: {{weight}}</div>
 
-        <div class="inf4"> Height: {{height}}</div>
-        
-        <!--
-            <h3>
-                <p style="color:black";>Types: {{type}}</p>
-            </h3>
-        -->
+        <div class="inf inf4"> Height: {{height}}</div>
+            
+        <h3>
+            <p style="color:black";>Types: {{type}}</p>
+        </h3>
         {% endif %}
     </div>    
 
