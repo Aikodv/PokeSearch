@@ -7,15 +7,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{% static 'css/mani.css' %}" crossorigin="anonymous"/>
     <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
     <title>PokeSearch</title>
 </head>
-<body style="background: linear-gradient(to right, #2d2ad4,#E4d2f7, #D42a45);">
-    <img src="{% static 'img/pikachu_error.png' %}" class="image" style="width:100px;">
-    
-    <div>
-        <h3>Pokemon not found, <a href="{% url 'pokeindex' %}">return.</a></h3>
+<body>
+    <div class="barra">
+        <div class="navbar">
+            <a href="http://127.0.0.1:8000/home"><img src="{% static 'img/pokesearch.png' %}" style="width:200px;" class="logo"></a>
+        <ul>
+            <li><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
+            <li><a href="http://127.0.0.1:8000/">Guess</a></li>
+            <li><a href="http://127.0.0.1:8000/about_us">About us</a></li>  
+        </ul>
+        </div>
+    </div>
+    <div class="palgif">
+        <div class="poggers"></div>
+    </div>
+    <div class="container">
+        <div class="centrar">
+            <img src="{% static 'img/pikaded.gif' %}" style="width:400px;"" style="">
+            <h3><a href="http://127.0.0.1:8000/home">Pokemon not found, Click here return to home</a></h3>
+        </div>
     </div>
 </body>
 </html>
