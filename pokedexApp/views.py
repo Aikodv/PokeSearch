@@ -4,6 +4,7 @@ import json
 from http import HTTPStatus
 from urllib.error import HTTPError
 from django.http import FileResponse
+import random
 
 # Funciones para los path
 
@@ -408,29 +409,56 @@ def guess(request):
         if request.method == 'POST':
             pokemon = request.POST['pokemon'].lower()
             pokemon = pokemon.replace(' ', '%20')
-            url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
+            respuesta = (pokemon)
+            
+            if respuesta in ["play"]:
+                pokemon_aleatorio = random.randint(1, 898)
+                url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/'+str(pokemon_aleatorio))
+                url_pokeapi.add_header('User-Agent', "pikachu")
+                source = urllib.request.urlopen(url_pokeapi).read()
+                # Convirtiendo el JSON a un diccionario
+                # 'list_of_data' guardará todos los datos que estamos solicitando
+                list_of_data = json.loads(source)
+                a = list_of_data['name']
+                f = open(str('guess')+".txt", "w")
+                f.write(a + "\n")
+                f.close()
+                # La variable 'data' guardará todo lo que vamos a renderizar en HTML
+
+                data = {
+                    "name": str(list_of_data['name']).capitalize(),
+                    "sprite": str(list_of_data['sprites']['front_default']),
+                    "image": str(list_of_data['sprites']['other']['official-artwork']['front_default']),
+                    "nose" : "xd",
+                } 
+                return render(request, "main/guess.html", data)
+            guess = create_list("guess")
+            guess = guess[0]
+            print(respuesta)
+            print(guess)
+            url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/'+str(guess))
             url_pokeapi.add_header('User-Agent', "pikachu")
             source = urllib.request.urlopen(url_pokeapi).read()
-
             # Convirtiendo el JSON a un diccionario
             # 'list_of_data' guardará todos los datos que estamos solicitando
             list_of_data = json.loads(source)
-                
-            # La variable 'data' guardará todo lo que vamos a renderizar en HTML
-
-            data = {
-                "number": str(list_of_data['id']),
-                "name": str(list_of_data['name']).capitalize(),
-                "sprite": str(list_of_data['sprites']['front_default']),
-                "image": str(list_of_data['sprites']['other']['official-artwork']['front_default']),
-
-            }
-
-
+            if respuesta == guess:
+                data = {
+                    "names":  guess,
+                    "pokemon": str(list_of_data['sprites']['other']['official-artwork']['front_default']),
+                }
+                return render(request, "main/guess.html", data)
+            if respuesta != guess:
+                data = {
+                    "hola":  guess,
+                    "pokemons": str(list_of_data['sprites']['other']['official-artwork']['front_default']),
+                }
+                return render(request, "main/guess.html", data)
+        
         else:
             data = {}
+        return render(request, "main/guess.html", data)
 
-        return render(request, "main/index.html", data)
     except HTTPError as e:
         if e.code == 404:
             return render(request, "main/404.html")
