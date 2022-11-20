@@ -31,7 +31,7 @@
     </div>
 
 
-    <!--Datos de Información-->
+    <!--estodo inicial este tiene que ser igual que el de abajo-->
 
     {% if name and nose %}
 
@@ -45,10 +45,15 @@
         </form>
     </div>    
     <h1> <img src="{{image}}" style='filter: brightness(0);'alt="Pokemon Image"></h1>
+    
+    <!--Se adivina el pokemon-->
+
     {% elif names and pokemon %}
         <h1 class="ganar">ese era xd</h1>        
         <h1> <img src="{{pokemon}}" alt="Pokemon Image"></h1>
-    
+
+    <!--se busco pero no era  este tiene que ser igual que el de arriba-->
+
     {% elif hola and pokemons %}
     
     <div class="cajita">    
@@ -60,7 +65,10 @@
             </div>    
         </form>
     </div>    
+    
     <h1> <img src="{{pokemons}}" style='filter: brightness(0);' alt="Pokemon Image"></h1>
+
+    <!--Estado inicial-->
     {% else %}
      <div class="cajita">    
         <form method="post">
