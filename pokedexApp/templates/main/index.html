@@ -63,9 +63,13 @@
         <div class="inf inf5"> Types: {{types}}</div>
 
         <div class="inf inf6"> Habilities: {{abilities}}</div>
-        {% endif %}
-
         
+        {% else %}
+
+        <div class="inffoto">
+            <a><img src="{% static 'img/snorlax.gif' %}" style="width:300px;"></a>
+        </div>
+        {% endif %}
     </div>    
 
 </body>

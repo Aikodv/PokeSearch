@@ -78,12 +78,8 @@
      <div class="cajita2">    
         <form method="post">
             {% csrf_token %}            
-            <button class="buton_epico" title="Play" type="submit" name="pokemon"  value='play' onclick="audio.play();"><img src="{% static 'img/play.png' %}" style="width:400px;">
+            <button class="buton_epico" title="Play" type="submit" name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:400px;">
             </button>
-            <script type="text/javascript">
-                const audio = new Audio()
-                audio.src = "{% static 'wtp.mp3' %}";
-            </script>
         </form>
 
         <audio class="uwu" controls autoplay>
