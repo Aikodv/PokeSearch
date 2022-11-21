@@ -82,6 +82,7 @@ body {
   position: absolute;
   left: 10%;
   top: 5%;
+  height: auto; 
 }
 
 
@@ -90,6 +91,7 @@ body {
   position: absolute;
   left:50%;
   top: 5%;
+  height: auto; 
 }
 
 .inf3{
@@ -97,7 +99,7 @@ body {
   position: absolute;
   left: 50%;
   top: 40% ;
-  height: 90px; 
+  height: auto; 
 }
 
 .inf4{
@@ -107,7 +109,7 @@ body {
   top: 50% ;
   left: 10%;
   top: 40%;
-  height: 90px; 
+  height: auto; 
 }
 
 .inf5{
@@ -115,7 +117,7 @@ body {
   position: absolute;
   left: 50%;
   top: 70%;
-  height: 125px; 
+  height: auto; 
 }
 
 .inf6{
@@ -123,15 +125,15 @@ body {
   position: absolute;
   left: 10%;
   top: 70%;
-  height: 125px; 
+  height: auto; 
 }
 
 .foto{
   position:absolute;
   width: 210px;
   height:140px;
-  top: 28%;
-  left: 43%;  
+  top: 25%;
+  left: 42%;  
   z-index: 1
 }
 
