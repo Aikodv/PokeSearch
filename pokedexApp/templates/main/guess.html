@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="{% static 'css/guess.css' %}" crossorigin="anonymous"/>
     <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
     <title>PokeSearch</title>
+
+    <script type="text/javascript">
+        const audio = new Audio()
+        audio.src = "{% static 'wtp.mp3' %}";
+    </script>
 </head>
 
 <body>
@@ -73,8 +78,17 @@
      <div class="cajita2">    
         <form method="post">
             {% csrf_token %}            
-            <button class="buton_epico" title="Play" type="submit" name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:400px;"></button>
+            <button class="buton_epico" title="Play" type="submit" name="pokemon"  value='play' onclick="audio.play();"><img src="{% static 'img/play.png' %}" style="width:400px;">
+            </button>
+            <script type="text/javascript">
+                const audio = new Audio()
+                audio.src = "{% static 'wtp.mp3' %}";
+            </script>
         </form>
+
+        <audio class="uwu" controls autoplay>
+            <source src="{% static 'wtp.mp3'%}">
+        </audio>
     </div>
     {% endif %}
 
