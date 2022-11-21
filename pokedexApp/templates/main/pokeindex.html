@@ -13,7 +13,7 @@
 
 <body>
     <div style="height: 120px;">
-    
+
         <div class="barra">
             <div class="navbar">
                 <a title ="Easter_Egg"  href="http://127.0.0.1:8000/"> <img src="{% static 'img/pokesearch.png' %}" style="width:200px;"></a>
@@ -172,82 +172,98 @@
                 </form>
             </h3>
             {% elif lista_epica_generacion%}
-            <form method="post">
-                {% csrf_token %} 
-                <h3>
-                    <h1 style="color:yellow";>Tu pokemon es evolucion de otro</h1>
-                </h3>
-                <div class="photo">
-                    <div class="yes_evolution">
-                        <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_evolution'>Yes</button>
-                    </div>
-                </div>
+            <div class='botones_sinon'>
+                <a><img style="width:450px;"src="{% static 'img/type_dialoge.png' %}" style="width:200px;">
+            <div/>
+            <div class='botones_sino'>
+                
+                <form method="post">
+                    <img class="photo" src="{% static 'img/foto1.gif' %}" style="width:200px;">
+                    {% csrf_token %} 
+                    <button class="cybr-btn" title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution'>
+                    No<span aria-hidden>_</span>
+                    <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+                    <span aria-hidden class="cybr-btn__tag">R25</span>
+                    </button>
+                    <button class="cybr-btn" title="Yes" type="submit" name="pokemon"  value='yes_evolution'>
+                        Yes<span aria-hidden>_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Cyber_</span>
+                        <span aria-hidden class="cybr-btn__tag">R25</span>
+                    </button>
+                    <img class="photo" src="{% static 'img/foto2.gif' %}" style="width:200px;">
 
-                <div class="photo">
-                    <div class="not_evolution">
-                        <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution'>Not</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
+
                 
             {% elif lista_epica_evolution%}
-                {{lista_epica_evolution}}
+            <div class='botones_sinon'>
+                <a><img style="width:450px;"src="{% static 'img/type_dialoge.png' %}" style="width:200px;">
+            <div/>
+            <div class='botones_sino'>
+                
                 <form method="post">
+                    <img class="photo" src="{% static 'img/foto1.gif' %}" style="width:200px;">
                     {% csrf_token %} 
-                    <h3>
-                        <h1 style="color:yellow";>Tu pokemon es legendario</h1>{{lista_epica_evolution}}
-                    </h3>
-                    <div class="photo">
-                        <div class="yes_legendary">
-                            <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_legendary'>Yes</button>
-                        </div>
-                    </div>
+                    <button class="cybr-btn" title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_legendary'>
+                    No<span aria-hidden>_</span>
+                    <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+                    <span aria-hidden class="cybr-btn__tag">R25</span>
+                    </button>
+                    <button class="cybr-btn" title="Yes" type="submit" name="pokemon"  value='yes_legendary'>
+                        Yes<span aria-hidden>_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Cyber_</span>
+                        <span aria-hidden class="cybr-btn__tag">R25</span>
+                    </button>
+                    <img class="photo" src="{% static 'img/foto2.gif' %}" style="width:200px;">
 
-                    <div class="photo">
-                        <div class="not_legendary">
-                            <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_legendary'>Not</button>
-                        </div>
-                    </div>
                 </form>
-            
+            </div>
             {% elif lista_epica_legendary or lista_epica_not_legendary %}
-                    <form method="post"> 
+            <div class='botones_sinon'>
+                <a><img style="width:450px;"src="{% static 'img/type_dialoge.png' %}" style="width:200px;">
+            <div/>
+            <div class='botones_sino'>
+                
+                <form method="post">
+                    <img class="photo" src="{% static 'img/foto1.gif' %}" style="width:200px;">
                     {% csrf_token %} 
-                    <h3>
-                        <h1 style="color:yellow";>Tu pokemon es singular?</h1>
-                    </h3>
-                    <div class="photo">
-                        <div class="yes_mithical">
-                            <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes_mythical'>Yes</button>
-                        </div>
-                    </div>
+                    <button class="cybr-btn" title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_mythical'>
+                    No<span aria-hidden>_</span>
+                    <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+                    <span aria-hidden class="cybr-btn__tag">R25</span>
+                    </button>
+                    <button class="cybr-btn" title="Yes" type="submit" name="pokemon"  value='yes_mythical'>
+                        Yes<span aria-hidden>_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Cyber_</span>
+                        <span aria-hidden class="cybr-btn__tag">R25</span>
+                    </button>
+                    <img class="photo" src="{% static 'img/foto2.gif' %}" style="width:200px;">
 
-                    <div class="photo">
-                        <div class="not_mithical">
-                            <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_mythical'>Not</button>
-                        </div>
-                    </div>
                 </form>
+            </div>
             {% elif pokemon_no_encontrado%}
-            <form method="post"> 
-                {% csrf_token %} 
-                <h3>
-                    <h1 style="color:yellow";>Tu pokemon es {{namess}}?</h1>
-                </h3>
-                <div class="photo">
-                    <div class="yes">
-                        <button title="Yes" type="submit" style="width:100px;"  name="pokemon"  value='yes'>Yes</button>
-                    </div>
-                </div>
-
-                <div class="photo">
-                    <div class="not">
-                        <button title="Not" style="width:100px;" type="submit"  name="pokemon"  value='no'>Not</button>
-                    </div>
-                </div>
-            </form>
+            <div class='botones_sinon'>
+                <h1 style="color:white;font-size: 150%;" >Your pokemon is {{namess}}? </h1>
+            <div class='botones_sino'> 
+                <form method="post">
+                    <img class="photo" src="{% static 'img/foto1.gif' %}" style="width:200px;">
+                    {% csrf_token %} 
+                    <button class="cybr-btn" title="Not" style="width:100px;" type="submit"  name="pokemon"  value='no'>
+                    No<span aria-hidden>_</span>
+                    <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+                    <span aria-hidden class="cybr-btn__tag">R25</span>
+                    </button>
+                    <button class="cybr-btn" title="Yes" type="submit" name="pokemon"  value='yes'>
+                        Yes<span aria-hidden>_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Cyber_</span>
+                        <span aria-hidden class="cybr-btn__tag">R25</span>
+                    </button>
+                    <img class="photo" src="{% static 'img/foto2.gif' %}" style="width:200px;">
+                </form>
+            </div>
             {% elif pokemon_encontrado %}
-                <h1 style="color:yellow";>tu pokemon es {{pokemon_encontrado}} </h1>
+                <h1 style="color:white;font-size: 150%;" >Your pokemon is {{pokemon_encontrado}} </h1>
                 <img src="{{imagen}}" sprite" style="width:300px">
             {% else %}
             <div>
@@ -258,7 +274,6 @@
                 <form method="post">
                     {% csrf_token %}
 
-                    
                     <div class="photo">
                         <div class="normal_type">
                             <button title="Normal" type="submit"  name="pokemon" style="border-radius:100px" value='normal'><img src="{% static 'img/normal.png' %}" style="width:50px;"></button>
@@ -363,7 +378,6 @@
                     </div>
 
                     <div class="photo">
-
                         <div class="fairy_type">
                             <button title="Fairy"type="submit" name="pokemon" style="border-radius:100px" value='fairy'><img src="{% static 'img/fairy.png' %}" style="width:50px;"></button>
                         </div>
