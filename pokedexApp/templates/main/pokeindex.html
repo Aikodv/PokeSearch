@@ -182,12 +182,12 @@
                     {% csrf_token %} 
                     <button class="cybr-btn" title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_evolution'>
                     No<span aria-hidden>_</span>
-                    <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+                    <span aria-hidden class="cybr-btn__glitch">No_</span>
                     <span aria-hidden class="cybr-btn__tag">R25</span>
                     </button>
                     <button class="cybr-btn" title="Yes" type="submit" name="pokemon"  value='yes_evolution'>
                         Yes<span aria-hidden>_</span>
-                        <span aria-hidden class="cybr-btn__glitch">Cyber_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Yes_</span>
                         <span aria-hidden class="cybr-btn__tag">R25</span>
                     </button>
                     <img class="photo" src="{% static 'img/foto2.gif' %}" style="width:200px;">
@@ -207,12 +207,12 @@
                     {% csrf_token %} 
                     <button class="cybr-btn" title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_legendary'>
                     No<span aria-hidden>_</span>
-                    <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+                    <span aria-hidden class="cybr-btn__glitch">No_</span>
                     <span aria-hidden class="cybr-btn__tag">R25</span>
                     </button>
                     <button class="cybr-btn" title="Yes" type="submit" name="pokemon"  value='yes_legendary'>
                         Yes<span aria-hidden>_</span>
-                        <span aria-hidden class="cybr-btn__glitch">Cyber_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Yes_</span>
                         <span aria-hidden class="cybr-btn__tag">R25</span>
                     </button>
                     <img class="photo" src="{% static 'img/foto4.gif' %}" style="width:200px;">
@@ -230,12 +230,12 @@
                     {% csrf_token %} 
                     <button class="cybr-btn" title="Not" style="width:100px;" type="submit"  name="pokemon"  value='not_mythical'>
                     No<span aria-hidden>_</span>
-                    <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+                    <span aria-hidden class="cybr-btn__glitch">No_</span>
                     <span aria-hidden class="cybr-btn__tag">R25</span>
                     </button>
                     <button class="cybr-btn" title="Yes" type="submit" name="pokemon"  value='yes_mythical'>
                         Yes<span aria-hidden>_</span>
-                        <span aria-hidden class="cybr-btn__glitch">Cyber_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Yes_</span>
                         <span aria-hidden class="cybr-btn__tag">R25</span>
                     </button>
                     <img class="photo" src="{% static 'img/foto6.gif' %}" style="width:200px;">
@@ -251,20 +251,24 @@
                     {% csrf_token %} 
                     <button class="cybr-btn" title="Not" style="width:100px;" type="submit"  name="pokemon"  value='no'>
                     No<span aria-hidden>_</span>
-                    <span aria-hidden class="cybr-btn__glitch">Buttons_</span>
+                    <span aria-hidden class="cybr-btn__glitch">No_</span>
                     <span aria-hidden class="cybr-btn__tag">R25</span>
                     </button>
                     <button class="cybr-btn" title="Yes" type="submit" name="pokemon"  value='yes'>
                         Yes<span aria-hidden>_</span>
-                        <span aria-hidden class="cybr-btn__glitch">Cyber_</span>
+                        <span aria-hidden class="cybr-btn__glitch">Yes_</span>
                         <span aria-hidden class="cybr-btn__tag">R25</span>
                     </button>
                     <img class="photo" src="{% static 'img/foto8.gif' %}" style="width:200px;">
                 </form>
             </div>
             {% elif pokemon_encontrado %}
-                <h1 style="color:white;font-size: 150%;" >Your pokemon is {{pokemon_encontrado}} </h1>
-                <img src="{{imagen}}" sprite" style="width:300px">
+            <div class='botones_sinon'>
+                <a ><img src="{% static 'img/pokemon_encontrado.png' %}" style="width:300px; margin-top: 0px;">
+            <div/>
+            <div class='botones_sino'>
+                <h1 style="color:white;font-size: 150%;" >{{pokemon_encontrado}} </h1>
+                <img src="{{imagen}}" sprite" style="width:400px">
             {% else %}
             <div>
                 <div class="pikachu">

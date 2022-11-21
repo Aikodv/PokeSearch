@@ -19,6 +19,7 @@ def intersectar():
 
     return list(duplicates2)
 # create a function to get the list of pokemon of a color
+
 def list_color(request,color):
     url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon-color/'+str(color))
     url_pokeapi.add_header('User-Agent', "pikachu")
@@ -141,8 +142,12 @@ def pokeindex(request):
                 url_pokeapi.add_header('User-Agent', "poison")
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
-                create_txt(list_pokemon(request,pokemon),"typepokemon")
 
+                print(list_pokemon(request,pokemon),"typepokemon")
+
+
+                create_txt(list_pokemon(request,pokemon),"typepokemon")
+                    
                 data = {
                     "lista_epica_type": list_pokemon(request,str(list_of_data['name'])),
                     }
@@ -154,6 +159,7 @@ def pokeindex(request):
                 url_pokeapi.add_header('User-Agent', "poison")
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
+                print(list_color(request,pokemon),"colorpokemon")
                 create_txt(list_color(request,pokemon),"colorpokemon")
                 data = {
                     "name": str(list_of_data['name']),
@@ -167,7 +173,7 @@ def pokeindex(request):
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
                 create_txt(list_generation(request,pokemon),"generationpokemon")
-
+                print((list_generation(request,pokemon),"generationpokemon"))
                 data = {
                     "name": str(list_of_data['name']),
                     "lista_epica_generacion": list_generation(request,str(list_of_data['name'])),
@@ -204,6 +210,7 @@ def pokeindex(request):
                         a.append(x)
                 if len(a) == 0:
                     return render(request, "main/404.html")
+                
                 create_txt(a,"evolution")
                 data = {
 
