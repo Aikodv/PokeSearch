@@ -75,6 +75,7 @@ body {
   background-color: transparent;
   background: transparent;
   border: transparent;
+  margin-top: 100px;
 }
 
 .uwu{
@@ -214,4 +215,17 @@ h1 img{
   position: relative;
   top: -240px;
   width: 20%;
+}
+.photo{
+
+  overflow: hidden;
+}
+
+img {
+  transition: transform 0.25s;
+}
+
+.photo:hover img {
+  transform: scale(1.2);
+  
 }

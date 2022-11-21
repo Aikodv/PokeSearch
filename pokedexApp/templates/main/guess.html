@@ -45,7 +45,7 @@
             {% csrf_token %}
             <div>
                 <input type="text" name="pokemon" placeholder="Pokemon Name or ID" autocomplete="off">
-                <button class="button button5">Guess </button>
+                <button class="button button5">Guess </button> <button class="button " title="Play" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/dados.png' %}" style="width:25px;"></button>
             </div>    
         </form>
     </div>    
@@ -55,7 +55,6 @@
     <!--Se adivina el pokemon-->
 
     {% elif names and pokemon %}
-        <h1 class="ganar">ese era xd</h1>        
         <h1> <img src="{{pokemon}}" alt="Pokemon Image"></h1>
     <!--se busco pero no era  este tiene que ser igual que el de arriba-->
 
@@ -76,7 +75,7 @@
     {% else %}
 
      <div class="cajita2">    
-        <form method="post">
+        <form class="photo" method="post">
             {% csrf_token %}            
             <button class="buton_epico" title="Play" type="submit" name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:400px;">
             </button>
