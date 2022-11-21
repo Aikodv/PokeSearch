@@ -43,7 +43,8 @@
             </div>    
         </form>
     </div>    
-    <h1> <img src="{{image}}" style='filter: brightness(0);'alt="Pokemon Image"></h1>
+    <h1> <img class="no_seleccionable"src="{{image}}" style='filter: brightness(0); pointer-events: none;
+        user-select: none;'alt="Pokemon Image"></h1>
     <!--Se adivina el pokemon-->
 
     {% elif names and pokemon %}
@@ -61,7 +62,8 @@
             </div>    
         </form>
     </div>    
-    <h1> <img src="{{pokemons}}" style='filter: brightness(0);' alt="Pokemon Image"></h1>
+    <h1> <img class="no_seleccionable"src="{{pokemons}}" style='filter: brightness(0);  pointer-events: none;
+        user-select: none;' alt="Pokemon Image"></h1>
 
     <!--Estado inicial-->
     {% else %}

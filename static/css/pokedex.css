@@ -369,3 +369,7 @@ content:'';
   background: rgba(255,255,255,0.075);
     transform: skew(25deg)
 }
+.no_seleccionable {
+  pointer-events: none;
+  user-select: none;
+}
