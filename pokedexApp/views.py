@@ -142,7 +142,7 @@ def pokeindex(request):
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
                 create_txt(list_pokemon(request,pokemon),"typepokemon")
-
+    
                 data = {
                     "lista_epica_type": list_pokemon(request,str(list_of_data['name'])),
                     }
@@ -184,8 +184,6 @@ def pokeindex(request):
                     print(x,validate_evolution(x))
                     if validate_evolution(x) == True:
                         a.append(x)
-                if len(a) == 0:
-                    return render(request, "main/404.html")
                 create_txt(a,"evolution")   
                 
 
@@ -202,8 +200,6 @@ def pokeindex(request):
                     print(x,validate_evolution(x))
                     if validate_evolution(x) == False:
                         a.append(x)
-                if len(a) == 0:
-                    return render(request, "main/404.html")
                 create_txt(a,"evolution")
                 data = {
 
@@ -224,8 +220,6 @@ def pokeindex(request):
                         # agregar a la lista vacia
                         list_legendary.append(pokemons[i])
                 if respuesta == "yes_legendary":
-                    if len(list_legendary) == 0:
-                        return render(request, "main/404.html")
                     if len(list_legendary) == 1:
                         data = {
                             "pokemon_encontrado": list_legendary[0],
@@ -240,8 +234,7 @@ def pokeindex(request):
                 if respuesta == "not_legendary":
                     for x in list_legendary:
                         pokemons.remove(x)
-                    if len(pokemons) == 0:
-                        return render(request, "main/404.html")
+                    
                     if len(pokemons) == 1:
                         data = {
                             "pokemon_encontrado": pokemons[0],
@@ -403,6 +396,7 @@ def index(request):
 
             }
 
+            print(data)
         else:
             data = {}
 

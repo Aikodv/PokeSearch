@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="{% static 'css/pokedex.css' %}" crossorigin="anonymous"/>
     <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
     <title>PokeSearch</title>
-
 </head>
 
 <body>
+
     <!--TopBar-->
     <div class="barra">
         <div class="navbar">
@@ -71,7 +71,7 @@
 
     <!--Estado inicial-->
     {% else %}
-    
+
      <div class="cajita2">    
         <form method="post">
             {% csrf_token %}
