@@ -14,6 +14,7 @@
 <body>
     <div class="rayas"></div>
     <div class="rayas1"></div>
+
     <!--TopBar-->
     <div class="barra">
         <div class="navbar">
@@ -45,6 +46,7 @@
     </div>    
     <h1> <img class="no_seleccionable"src="{{image}}" style='filter: brightness(0); pointer-events: none;
         user-select: none;'alt="Pokemon Image"></h1>
+    
     <!--Se adivina el pokemon-->
 
     {% elif names and pokemon %}
@@ -70,10 +72,8 @@
 
      <div class="cajita2">    
         <form method="post">
-            {% csrf_token %}
-            
-            <button class="buton_epico"title="Play" type="submit"  name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:400px;"></button>
-
+            {% csrf_token %}            
+            <button class="buton_epico" title="Play" type="submit" name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:400px;"></button>
         </form>
     </div>
     {% endif %}
