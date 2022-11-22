@@ -235,7 +235,7 @@ def pokeindex(request):
                         return render(request, "main/404.html")
                     if len(list_legendary) == 1:
                         data = {
-                            "pokemon_encontrado": list_legendary[0],
+                            "pokemon_encontrado": list_legendary[0].capitalize(),
                             "imagen": get_image(request,list_legendary[0]),
                         }
                         return render(request, "main/pokeindex.html", data)
@@ -251,7 +251,7 @@ def pokeindex(request):
                         return render(request, "main/404.html")
                     if len(pokemons) == 1:
                         data = {
-                            "pokemon_encontrado": pokemons[0],
+                            "pokemon_encontrado": pokemons[0].capitalize(),
                             "lista_epica_not_legendary": pokemons,
 
                         }
@@ -277,7 +277,7 @@ def pokeindex(request):
                 if respuesta == "yes_mythical":
                     if len(list_mythical) == 1:
                         data = {
-                            "pokemon_encontrado": list_mythical[0],
+                            "pokemon_encontrado": list_mythical[0].capitalize(),
                             "imagen": get_image(request,list_mythical[0]),
                         }
                         return render(request, "main/pokeindex.html", data)
@@ -293,7 +293,7 @@ def pokeindex(request):
                     create_txt(pokemons,"mythicalpokemon")
                     if len(pokemons) == 1:
                         data = {
-                            "pokemon_encontrado": pokemons[0],
+                            "pokemon_encontrado": pokemons[0].capitalize(),
                             "lista_epica_not_mythical": pokemons,
                             "imagen": get_image(request,pokemons[0]),
 
@@ -312,7 +312,7 @@ def pokeindex(request):
                 if respuesta == "yes":
                     print(pokemons[0])
                     data = {
-                        "pokemon_encontrado": pokemons[0],
+                        "pokemon_encontrado": pokemons[0].capitalize(),
                         "imagen": get_image(request,pokemons[0]),
                     }
                     return render(request, "main/pokeindex.html",data)
@@ -321,7 +321,7 @@ def pokeindex(request):
                     pokemons = create_list("mythicalpokemon")
                     if len(pokemons) == 1:
                         data = {
-                            "pokemon_encontrado": pokemons[0],
+                            "pokemon_encontrado": pokemons[0].capitalize(),
                             "imagen": get_image(request,pokemons[0]),
                         }
                         return render(request, "main/pokeindex.html", data)
