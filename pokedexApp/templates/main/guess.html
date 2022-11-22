@@ -64,7 +64,7 @@
             {% csrf_token %}
             <div>
                 <input type="text" name="pokemon" placeholder="Pokemon Name or ID">
-                <button class="button button5">Guess </button>
+                <button class="button button5">Guess </button><button class="button " title="Play" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/dados.png' %}" style="width:25px;"></button>
             </div>    
         </form>
     </div>    
