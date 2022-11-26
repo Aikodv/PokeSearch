@@ -1,5 +1,5 @@
 # PokeSearch
-First University Proyect in Django
+First University Proyect in Django and PokeAPI
 
 Search your pokemons with questions
 
