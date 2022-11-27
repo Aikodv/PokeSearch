@@ -45,17 +45,21 @@
             {% csrf_token %}
             <div>
                 <input type="text" name="pokemon" placeholder="Pokemon Name or ID" autocomplete="off">
-                <button class="button button5">Guess </button> <button class="button " title="Play" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/dados.png' %}" style="width:25px;"></button>
+                <button class="button button5">Guess </button><button class="photo buton_epico" title="reroll" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/dados.png' %}" style="width:50px;position:relative;left:40px;top:20px"></button>
             </div>    
         </form>
     </div>    
-    <h1> <img class="no_seleccionable"src="{{image}}" style='filter: brightness(0); pointer-events: none;
+    <h1 class="mover"> <img class="mover"src="{{image}}" style='filter: brightness(0); pointer-events: none;
         user-select: none;'alt="Pokemon Image"></h1>
     
     <!--Se adivina el pokemon-->
 
     {% elif names and pokemon %}
-        <h1> <img src="{{pokemon}}" alt="Pokemon Image"></h1>
+    <form method="post">
+        {% csrf_token %}
+        <h1> <img src="{{pokemon}}" alt="Pokemon Image">        <button class="photo buton_epico" title="reroll" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/restart.png' %}" style="width:100px;position:absolute;top:40%;left:35%;"></button>
+        </h1>
+    </form>
     <!--se busco pero no era  este tiene que ser igual que el de arriba-->
 
     {% elif hola and pokemons %}
@@ -64,7 +68,7 @@
             {% csrf_token %}
             <div>
                 <input type="text" name="pokemon" placeholder="Pokemon Name or ID">
-                <button class="button button5">Guess </button><button class="button " title="Play" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/dados.png' %}" style="width:25px;"></button>
+                <button class="button button5">Guess </button><button class="photo buton_epico" title="reroll" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/dados.png' %}" style="width:50px;position:relative;left:40px;top:20px"></button>
             </div>    
         </form>
     </div>    
@@ -77,7 +81,7 @@
      <div class="cajita2">    
         <form class="photo" method="post">
             {% csrf_token %}            
-            <button class="buton_epico" title="Play" type="submit" name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:400px;">
+            <button class="buton_epico" title="Play" type="submit" name="pokemon"  value='play'><img src="{% static 'img/play.png' %}" style="width:400px;margin-top: 100px;">
             </button>
         </form>
 

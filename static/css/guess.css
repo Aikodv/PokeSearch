@@ -75,7 +75,6 @@ body {
   background-color: transparent;
   background: transparent;
   border: transparent;
-  margin-top: 100px;
 }
 
 .uwu{
@@ -210,15 +209,12 @@ input[type=text]:focus {
 h1 img{  
   display: block;
   margin-right: auto;
-  margin-left: 460px ;
+  margin-left: 300px ;
   padding: 30px 0;
   position: relative;
-  top: -240px;
-  width: 20%;
-}
-.photo{
+  top: -300px;
+  width: 25%;
 
-  overflow: hidden;
 }
 
 img {
