@@ -142,12 +142,16 @@ def pokeindex(request):
                 url_pokeapi.add_header('User-Agent', "poison")
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
-
+                
                 print(list_pokemon(request,pokemon),"typepokemon")
 
 
                 create_txt(list_pokemon(request,pokemon),"typepokemon")
-                    
+                if respuesta in ["fairy","ghost"]:    
+                    #agregar a mimikyu al txt 
+                    f = open("typepokemon.txt", "a")
+                    f.write("mimikyu-disguised" + "\n")
+                    f.close()
                 data = {
                     "lista_epica_type": list_pokemon(request,str(list_of_data['name'])),
                     }
@@ -161,6 +165,11 @@ def pokeindex(request):
                 list_of_data = json.loads(source)
                 print(list_color(request,pokemon),"colorpokemon")
                 create_txt(list_color(request,pokemon),"colorpokemon")
+                if respuesta in ["yellow"]:
+                    #agregar a pikachu al txt 
+                    f = open("colorpokemon.txt", "a")
+                    f.write("mimikyu-disguised" + "\n")
+                    f.close()
                 data = {
                     "name": str(list_of_data['name']),
                     "lista_epica_color": list_color(request,str(list_of_data['name'])),
@@ -173,7 +182,12 @@ def pokeindex(request):
                 source = urllib.request.urlopen(url_pokeapi).read()
                 list_of_data = json.loads(source)
                 create_txt(list_generation(request,pokemon),"generationpokemon")
-                print((list_generation(request,pokemon),"generationpokemon"))
+                if respuesta in ["generation-vii"]:\
+                    #agregar a pikachu al txt
+                    f = open("generationpokemon.txt", "a")
+                    f.write("mimikyu-disguised" + "\n")
+                    f.close()
+
                 data = {
                     "name": str(list_of_data['name']),
                     "lista_epica_generacion": list_generation(request,str(list_of_data['name'])),
@@ -203,6 +217,7 @@ def pokeindex(request):
             
             if respuesta == "not_evolution":
                 pokemons = list(intersectar())
+    
                 a = []
                 for x in pokemons:
                     print(x,validate_evolution(x))
@@ -223,7 +238,11 @@ def pokeindex(request):
                 # pasar pokemons a una lista
                 pokemons = list(pokemons)
                 # crear una lista vacia
+                if "mimikyu-disguised" in pokemons:
+                    pokemons.append("mimikyu")
+                    pokemons.remove("mimikyu-disguised")
                 list_legendary = []
+                print(pokemons)
                 # recorrer la lista de pokemons
                 for i in range(len(pokemons)):
                     # validar si es legendary
@@ -266,6 +285,10 @@ def pokeindex(request):
                 pokemons = create_list("evolution")
                 # pasar pokemons a una lista
                 pokemons = list(pokemons)
+                if "mimikyu-disguised" in pokemons:
+                    pokemons.append("mimikyu")
+                    pokemons.remove("mimikyu-disguised")
+
                 # crear una lista vacia
                 list_mythical = []
                 # recorrer la lista de pokemons
@@ -274,6 +297,7 @@ def pokeindex(request):
                     if validate_mythical(request,pokemons[i]) == True:
                         # agregar a la lista vacia
                         list_mythical.append(pokemons[i])
+
                 if respuesta == "yes_mythical":
                     if len(list_mythical) == 1:
                         data = {
@@ -292,6 +316,12 @@ def pokeindex(request):
                     
                     create_txt(pokemons,"mythicalpokemon")
                     if len(pokemons) == 1:
+                        if pokemons[0] == "mimikyu":
+                            data = {
+                                "pokemon_encontrado": pokemons[0].capitalize(),
+                                "imagen": get_image(request,"mimikyu-disguised"),
+                            }
+                            return render(request, "main/pokeindex.html", data)
                         data = {
                             "pokemon_encontrado": pokemons[0].capitalize(),
                             "lista_epica_not_mythical": pokemons,
@@ -308,9 +338,12 @@ def pokeindex(request):
             if respuesta in ["yes","no"]:
                 pokemons = create_list("mythicalpokemon")
                 pokemons = list(pokemons)
-
+                if "mimikyu" in pokemons:
+                    pokemons.append("mimikyu-disguised")
+                    pokemons.remove("mimikyu")
+                print(pokemons)
                 if respuesta == "yes":
-                    print(pokemons[0])
+                    print(pokemons)
                     data = {
                         "pokemon_encontrado": pokemons[0].capitalize(),
                         "imagen": get_image(request,pokemons[0]),
@@ -319,13 +352,22 @@ def pokeindex(request):
                 if respuesta == "no":
                     remove_pokemon(pokemons[0])
                     pokemons = create_list("mythicalpokemon")
+                    if "mimikyu" in pokemons:
+                        pokemons.append("mimikyu-disguised")
+                        pokemons.remove("mimikyu")
                     if len(pokemons) == 1:
+                        if pokemons[0] == "mimikyu-disguised":
+                            data = {
+                                "pokemon_encontrado": "Mimikyu".capitalize(),
+                                "imagen": get_image(request,"mimikyu-disguised"),
+                            }
+                            return render(request, "main/pokeindex.html",data)
                         data = {
                             "pokemon_encontrado": pokemons[0].capitalize(),
                             "imagen": get_image(request,pokemons[0]),
                         }
                         return render(request, "main/pokeindex.html", data)
-                    print(pokemons)
+
 
                     data = {
                         "pokemon_no_encontrado": pokemons,

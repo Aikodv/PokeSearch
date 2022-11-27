@@ -86,3 +86,4 @@ brionne
 tsareena
 golisopod
 palossand
+mimikyu-disguised
