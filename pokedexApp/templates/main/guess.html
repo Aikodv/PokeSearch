@@ -57,7 +57,7 @@
     {% elif names and pokemon %}
     <form method="post">
         {% csrf_token %}
-        <h1> <img src="{{pokemon}}" alt="Pokemon Image">        <button class="photo buton_epico" title="reroll" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/restart.png' %}" style="width:100px;position:absolute;top:40%;left:35%;"></button>
+        <h1> <img src="{{pokemon}}" alt="Pokemon Image">        <button class="photo buton_epico" title="restart" type="submit" name="pokemon"  value='play' ><img src="{% static 'img/restart.png' %}" style="width:100px;position:absolute;top:40%;left:35%;"></button>
         </h1>
     </form>
     <!--se busco pero no era  este tiene que ser igual que el de arriba-->
