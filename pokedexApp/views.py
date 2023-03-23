@@ -176,7 +176,7 @@ def pokeindex(request):
                     }
 
                 return render(request, "main/pokeindex.html", data)
-            if respuesta in ["generation-i","generation-ii","generation-iii","generation-iv","generation-v","generation-vi","generation-vii","generation-viii"]:
+            if respuesta in ["generation-i","generation-ii","generation-iii","generation-iv","generation-v","generation-vi","generation-vii","generation-viii","generation-ix"]:
                 url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/generation/{pokemon}')
                 url_pokeapi.add_header('User-Agent', "poison")
                 source = urllib.request.urlopen(url_pokeapi).read()
