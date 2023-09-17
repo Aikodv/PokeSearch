@@ -198,7 +198,6 @@ def pokeindex(request):
 
             if respuesta == "yes_evolution":
                 pokemons = list(intersectar())
-                print(pokemons)
                 a = []
                 for x in pokemons:
                     print(x,validate_evolution(x))
@@ -449,8 +448,7 @@ def index(request):
                 "abilities": abilities,
                 "moves": moves,
                 "stats": stats,
-
-            }
+             }
 
         else:
             data = {}
@@ -472,7 +470,10 @@ def guess(request):
             pokemon = request.POST['pokemon'].lower()
             pokemon = pokemon.replace(' ', '%20')
             respuesta = (pokemon)
-            
+            # i need a pokemon 
+
+
+
             if respuesta in ["play"]:
                 pokemon_aleatorio = random.randint(1, 898)
                 url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/'+str(pokemon_aleatorio))
@@ -524,3 +525,45 @@ def guess(request):
     except HTTPError as e:
         if e.code == 404:
             return render(request, "main/404.html")
+        
+def test(request):    
+    try:
+        if request.method == 'POST':
+            pokemon = request.POST['nombre'].lower()
+            pokemon = pokemon.replace(' ', '%20')
+            url_pokeapi = urllib.request.Request(f'https://pokeapi.co/api/v2/pokemon/{pokemon}')
+            url_pokeapi.add_header('User-Agent', "pikachu")
+            source = urllib.request.urlopen(url_pokeapi).read()
+            list_of_data = json.loads(source)
+            data = {
+                "ejemplo" : str(list_of_data['types'][0]['type']['name']), 
+                
+            }
+
+            return render(request, "main/test.html", data )
+        
+
+        else:
+            return render(request, "main/test.html" )
+
+    except HTTPError as e:
+        if e.code == 404:
+            return render(request, "main/404.html")
+        
+
+import http.client
+
+conn = http.client.HTTPSConnection("real-time-climate-index.p.rapidapi.com")
+
+headers = {
+    'X-RapidAPI-Key': 'ba0b674e8fmsh50b4d78fba87fa4p1d2685jsn8f66547cef4b',
+    'X-RapidAPI-Host': "real-time-climate-index.p.rapidapi.com"
+}
+
+conn.request("GET", "/api/climate-data", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+list_of_data = json.loads(data)
+a = str(list_of_data[0])
+print(a)

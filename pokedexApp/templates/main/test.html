@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- The load static is necessary to load images, css and JS -->
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/pokedex.css' %}" crossorigin="anonymous"/>
+    <link rel="icon" href="{% static 'img/pokeball-icon.ico' %}">
+    <title>PokeSearch</title>
+</head>
+<body>
+    <div class="barra">
+        <div class="navbar">
+            <a href="http://127.0.0.1:8000/"><img src="{% static 'img/pokesearch.png' %}" style="width:200px;" class="logo"></a>
+        <ul>
+            <li><a href="http://127.0.0.1:8000/search">PokeSearch</a></li>
+            <li><a href="http://127.0.0.1:8000/guess">Guess</a></li>
+            <li><a href="http://127.0.0.1:8000/pokedex">Pokedex</a></li>
+            <li><a href="http://127.0.0.1:8000/about_us">About us</a></li>  
+        </ul>
+        </div>
+    </div>
+    <div class="palgif">
+        <div class="poggers"></div>
+    </div>
+
+    {% if ejemplo%}
+        <div> Hola el pokemon que has ingresado es tipo {{ejemplo}}
+        </div>
+
+    {% else %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="nombre">
+        <button class="button button5"></button>   
+    </form>
+
+    {% endif %}
+
+</body>
+</html>
